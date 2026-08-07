@@ -5,12 +5,18 @@ export type NavigationItem = {
 
 export const navigation: NavigationItem[] = [
   { label: "Home", href: "/" },
-  { label: "Health", href: "/solutions/health" },
-  { label: "Hygiene", href: "/solutions/hygiene" },
-  { label: "Pets", href: "/solutions/pets" },
-  { label: "Technology", href: "/technology" },
+  { label: "About", href: "/about" },
+  { label: "Solutions", href: "/solutions" },
   { label: "Community", href: "/community" },
+  { label: "Stories", href: "/stories" },
+  { label: "Technology", href: "/technology" },
   { label: "Contact", href: "/contact" },
+];
+
+export const solutionNavigation: NavigationItem[] = [
+  { label: "OSANO Health", href: "/solutions/health" },
+  { label: "OSANO Hygiene", href: "/solutions/hygiene" },
+  { label: "OSANO Pets", href: "/solutions/pets" },
 ];
 
 export const footerNavigation = {
