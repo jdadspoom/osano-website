@@ -1,0 +1,18 @@
+.chatIcon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  margin-bottom: 17px;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chatIcon::after {
+  content: none;
+}

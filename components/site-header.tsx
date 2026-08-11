@@ -19,6 +19,20 @@ export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [isHeaderHidden, setIsHeaderHidden] = useState(false);
+
+  useEffect(() => {
+    let previousY = window.scrollY;
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      if (isOpen || isSearchOpen || currentY < 90) setIsHeaderHidden(false);
+      else if (currentY > previousY + 5) setIsHeaderHidden(true);
+      else if (currentY < previousY - 5) setIsHeaderHidden(false);
+      previousY = currentY;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isOpen, isSearchOpen]);
 
   const searchItems = useMemo(() => {
     const items = [
@@ -48,7 +62,7 @@ export function SiteHeader() {
   }, [isOpen]);
 
   return (
-    <header className="site-header">
+    <header className={`site-header${isHeaderHidden ? " site-header--hidden" : ""}`}>
       <div className="header-inner">
         <Link href="/" className="brand-link" aria-label="OSANO home">
           <Image
@@ -95,7 +109,7 @@ export function SiteHeader() {
 
         <div className="header-utilities">
           <span className="language-label" aria-label="Current language: English">
-            EN <span aria-hidden="true">⌄</span>
+            EN <span aria-hidden="true"></span>
           </span>
           <button
             type="button"
@@ -108,7 +122,10 @@ export function SiteHeader() {
               setIsOpen(false);
             }}
           >
-            <span aria-hidden="true" />
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="10.5" cy="10.5" r="6.25" />
+              <path d="m15.25 15.25 4.5 4.5" />
+            </svg>
           </button>
         </div>
 

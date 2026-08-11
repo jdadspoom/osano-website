@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { FloatingContact } from "@/components/floating-contact";
+import { SiteScrollEffects } from "@/components/site-scroll-effects";
+import { ScrollProgress } from "@/components/scroll-progress";
+import { CardPointerEffects } from "@/components/card-pointer-effects";
+import { AmbientBackgroundMotion } from "@/components/ambient-background-motion";
 import { absoluteUrl, siteConfig } from "@/data/site";
 import "./globals.css";
-
-const geist = Geist({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.baseUrl),
@@ -49,13 +47,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   };
 
   return (
-    <html lang="en" className={geist.variable} data-scroll-behavior="smooth">
+    <html lang="en" data-scroll-behavior="smooth">
       <body>
         <a className="skip-link" href="#main-content">
           Skip to main content
         </a>
         <SiteHeader />
+        <ScrollProgress />
+        <SiteScrollEffects />
+        <CardPointerEffects />
+        <AmbientBackgroundMotion />
         <main id="main-content">{children}</main>
+        <FloatingContact />
         <SiteFooter />
         <script
           type="application/ld+json"

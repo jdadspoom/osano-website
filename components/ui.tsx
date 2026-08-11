@@ -45,6 +45,10 @@ export function PageHero({
           <Eyebrow>{eyebrow}</Eyebrow>
           <h1>{title}</h1>
           <p className="hero-summary">{summary}</p>
+          <div className="page-hero-actions">
+            <Link href="/contact" className="button button-accent">Start a conversation</Link>
+            <Link href="/technology" className="button button-outline">Our Technology</Link>
+          </div>
         </div>
         <MediaPlaceholder media={media} tone={tone} priority />
       </div>

@@ -1,69 +1,19 @@
 import type { Metadata } from "next";
-import { MediaPlaceholder } from "@/components/media-placeholder";
-import { CTASection, Eyebrow, PageHero, SectionHeading } from "@/components/ui";
+import Image from "next/image";
+import styles from "../about.module.css";
 import { siteConfig } from "@/data/site";
 
-export const metadata: Metadata = {
-  title: "About OSANO",
-  description: siteConfig.statement,
-  alternates: { canonical: "/about" },
-};
+export const metadata: Metadata = { title: "About OSANO", description: siteConfig.statement, alternates: { canonical: "/about" } };
+
+function Placeholder({ label, className }: { label: string; className?: string }) {
+  return <div className={`${styles.placeholder} ${className ?? ""}`} data-final-asset={label}><span>IMAGE PLACEHOLDER</span><small>{label}</small></div>;
+}
 
 export default function AboutPage() {
-  return (
-    <>
-      <PageHero
-        eyebrow="About OSANO"
-        title="Innovation, made relevant to life."
-        summary={siteConfig.statement}
-        media={{ kind: "image", label: "OSANO Brand World Image" }}
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
-      />
-      <section className="editorial-split section-pad">
-        <div className="shell editorial-split-grid">
-          <SectionHeading
-            eyebrow="Our point of view"
-            title="The most useful innovation starts by paying attention."
-          />
-          <div className="editorial-body">
-            <p className="lead-copy">
-              OSANO looks first at people, pets, places and routines. Technology
-              becomes meaningful when it is shaped around this living context.
-            </p>
-            <p>
-              Across health, hygiene and pet care, we connect approved products and
-              technology platforms into a clearer, more considered experience.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section className="principles section-pad-sm">
-        <div className="shell principles-grid">
-          {[
-            ["01", "Context before complexity", "We begin with the setting and the people within it."],
-            ["02", "Precision with restraint", "We communicate clearly and avoid claims that have not been confirmed."],
-            ["03", "Better, together", "People, pets and environments are part of one connected everyday system."],
-          ].map(([number, title, copy]) => (
-            <article key={number}>
-              <span>{number}</span><h3>{title}</h3><p>{copy}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-      <section className="brand-landscape section-pad">
-        <div className="shell brand-landscape-grid">
-          <MediaPlaceholder media={{ kind: "image", label: "People and Place Image" }} tone="health" />
-          <div>
-            <Eyebrow>Contemporary, calm, connected</Eyebrow>
-            <h2>A lifestyle brand shaped for the world we share now.</h2>
-            <p>
-              OSANO brings a contemporary Asian perspective to better everyday
-              living: intelligent, precise, open and deeply aware of context.
-            </p>
-          </div>
-        </div>
-      </section>
-      <CTASection title="Begin with your environment, and build the right solution from there." />
-    </>
-  );
+  return <div className={styles.page}>
+    <section className={styles.hero}><Image src="/images/about/about-hero.webp" alt="Family sharing an OSANO-inspired everyday moment" fill priority sizes="100vw" className={styles.heroPhoto} /><div className={styles.heroCopy}><p className={styles.label}>ABOUT OSANO</p><h1>The Innovative<br />Lifestyle</h1><p>Meaningful innovation for better everyday living.</p><a href="#purpose" className={styles.primary}>Explore our philosophy</a></div></section>
+    <section className={styles.purpose} id="purpose"><div><p className={styles.label}>OUR PURPOSE</p><h2>Inspired by life. Driven by purpose.</h2><p>We bring meaningful innovation into everyday life, creating smarter choices for better living.</p></div><blockquote>“Innovation should make life better.”<cite>OSANO</cite></blockquote></section>
+    <section className={styles.innovation}><div><p className={styles.label}>OUR INNOVATION</p><h2>Advanced systems,<br />explained in everyday<br />language</h2><p>We operate with complete clarity. Our systems don’t hide behind scientific jargon; we publish all molecular testing datasets and lab reports freely.</p></div><ol>{[["01","Oxygen","Supporting better everyday well-being."],["02","Aqueous Ozone","A smarter approach to everyday hygiene."],["03","Hydrogen Water","Innovation for everyday wellness."]].map(([number,title,copy])=><li key={number}><b>{number}</b><span><strong>{title}</strong><small>{copy}</small></span></li>)}</ol></section>
+    <section className={styles.gathering}><Placeholder label="COMMUNITY GATHERING AND FORUM PHOTO" /></section>
+  </div>;
 }

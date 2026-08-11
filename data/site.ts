@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "OSANO",
   statement:
-    "OSANO is an innovation lifestyle brand that connects technology, context, people, pets, and better everyday living.",
+    "Innovation designed for better everyday living.Across health, hygiene, and life with pets",
   shortStatement: "Technology in step with everyday life.",
   defaultDescription:
     "Discover OSANO solutions connecting purposeful technology with healthier, cleaner and more considered everyday living.",
