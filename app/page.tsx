@@ -5,6 +5,7 @@ import { HomeVideoGallery } from "@/components/home-video-gallery";
 import { JoinCommunityButton } from "@/components/join-community-button";
 import { HomeScrollEffects } from "@/components/home-scroll-effects";
 import { resolvePublicImage } from "@/lib/public-image";
+import { ScrollExpand } from "@/components/scroll-expand";
 
 const worlds = [
   { title: "Osano Hygiene", tone: "hygiene", icon: "/images/home/icons/home-hygiene-icon.svg", tags: ["Air", "Water", "Surface"], href: "/solutions/hygiene", image: resolvePublicImage("images/home/home-hygiene"), position: "center 58%" },
@@ -29,15 +30,34 @@ export default function HomePage() {
   return (
     <div className={styles.page} data-home-page>
       <HomeScrollEffects />
-      <section className={styles.hero} aria-labelledby="home-title">
-        <Image
-          src="/images/home/home-hero.webp"
-          alt="Family enjoying a considered OSANO living environment"
-          fill
-          priority
-          sizes="100vw"
-          className={styles.heroMedia}
-        />
+      <ScrollExpand
+        src="/videos/home-hero.mp4"
+        poster="/images/home/home-hero.webp"
+        title={<Image src="/brand/OSANO_Master_Logo_Black.svg" alt="OSANO" width={430} height={100} priority />}
+      >
+        <div className={styles.expandHeroCopy}>
+          <div className={styles.expandWordmark}>
+            <Image src="/brand/OSANO_Master_Logo_Black.svg" alt="OSANO" fill sizes="310px" priority />
+          </div>
+          <h1>The Innovative<br />Lifestyle</h1>
+          <div className={styles.heroActions}>
+            <Link href="/solutions" className={styles.primaryButton}>Discover our solutions</Link>
+            <Link href="/technology" className={styles.glassButton}>Our Technology</Link>
+          </div>
+        </div>
+      </ScrollExpand>
+      <section className={`${styles.hero} ${styles.mobileHero}`} aria-labelledby="home-title">
+        <video
+          className={styles.heroVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/home/home-hero.webp"
+          aria-label="Family enjoying a considered OSANO living environment"
+        >
+          <source src="/videos/home-hero.mp4" type="video/mp4" />
+        </video>
         <div className={styles.heroShade} />
         <div className={styles.heroCopy}>
           <div className={styles.logoPlaceholder}>

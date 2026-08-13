@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="title">
+  <title id="title">Learn</title>
+  <g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path vector-effect="non-scaling-stroke" d="M3.25 4.5h3.5c2.9 0 5.25 2.1 5.25 4.75V20c0-2.1-1.95-3.75-4.5-3.75H3.25V4.5Z"/>
+    <path vector-effect="non-scaling-stroke" d="M20.75 4.5h-3.5c-2.9 0-5.25 2.1-5.25 4.75V20c0-2.1 1.95-3.75 4.5-3.75h4.25V4.5Z"/>
+  </g>
+</svg>

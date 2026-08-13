@@ -34,12 +34,15 @@ export function SiteFooter(){
       </div>
       <div className={`${styles.column} ${styles.connect}`}>
         <h2>CONNECT</h2>
-        <a href="mailto:hello@osanoliving.com">hello@osanoliving.com</a>
-        <a href="tel:+18005550144">+1 (800) 555-0144</a>
+        <a href="tel:029525414">02-952-5414</a>
+        <a href="tel:0661256694">066-125-6694 (Sales)</a>
+        <a href="tel:0894585177">089-458-5177 (Customer service)</a>
         <div className={styles.socials} aria-label="Social channels">
-          <span aria-label="Instagram placeholder" data-final-asset="OSANO INSTAGRAM URL"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="4"/><circle cx="12" cy="12" r="3"/><path d="M16.8 7.3h.01"/></svg></span>
-          <span aria-label="X placeholder" data-final-asset="OSANO X URL"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 6 10 12M17 6 7 18"/></svg></span>
-          <span aria-label="LinkedIn placeholder" data-final-asset="OSANO LINKEDIN URL"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v8M7 7v.01M11 18v-8m0 3.5c.8-2.2 6-2.7 6 1.5v3"/></svg></span>
+          <a href={`mailto:${siteConfig.contact.email}`} aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="2"/><path d="m4.5 7 7.5 5.5L19.5 7"/></svg></a>
+          <a href={siteConfig.contact.lineUrl} target="_blank" rel="noreferrer" aria-label="LINE"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11c0 4-3.6 7.2-8 7.2-1 0-1.9-.2-2.8-.5L5 19.5l1.1-3.1C4.8 15.1 4 13.2 4 11c0-4 3.6-7.2 8-7.2s8 3.2 8 7.2Z"/><path d="M8.2 10.1h7.6M8.2 13h5"/></svg></a>
+          <a href={siteConfig.contact.facebookUrl} target="_blank" rel="noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 20v-7h2.5l.4-3h-2.9V8.1c0-.9.3-1.6 1.7-1.6h1.4V3.8c-.4-.1-1.1-.2-2-.2-2.1 0-3.6 1.3-3.6 3.7V10H8.6v3H11v7"/></svg></a>
+          <a href={siteConfig.contact.instagramUrl} target="_blank" rel="noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><path d="M17.2 6.9h.01"/></svg></a>
+          <a href={siteConfig.contact.tiktokUrl} target="_blank" rel="noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4v10.1a3.7 3.7 0 1 1-3-3.6"/><path d="M14 4c.7 2.2 2 3.5 4 3.9"/></svg></a>
         </div>
       </div>
     </div>

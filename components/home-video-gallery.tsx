@@ -8,7 +8,7 @@ type HomeVideo = { id: string; title: string; label: string; src: string | null;
 
 // Replace src/poster paths here when the final video files arrive.
 const homeVideos: HomeVideo[] = [
-  { id: "osano-philosophy", title: "The OSANO Philosophy", label: "PHILOSOPHY VIDEO", src: null, poster: "/images/home/home-health.png" },
+  { id: "osano-philosophy", title: "hilosophThe OSANO Py", label: "PHILOSOPHY VIDEO", src: null, poster: "/images/home/home-health.png" },
   { id: "better-living", title: "Technology for Better Living", label: "BETTER LIVING VIDEO", src: null, poster: "/images/home/home-community-01.webp" },
   { id: "everyday-innovation", title: "Innovation in Everyday Life", label: "EVERYDAY INNOVATION VIDEO", src: null, poster: "/images/home/home-community-04.webp" },
 ];

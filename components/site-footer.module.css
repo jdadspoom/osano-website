@@ -9,7 +9,7 @@
 .column a:hover{opacity:.68}
 .connect{gap:13px}
 .socials{display:flex;gap:11px;margin-top:2px}
-.socials>span{width:27px;height:27px;display:grid;place-items:center;border-radius:50%;background:#f8f6f0;color:#17624e}
+.socials>a{width:27px;height:27px;display:grid;place-items:center;border-radius:50%;background:#f8f6f0;color:#17624e;transition:transform .16s ease,background-color .16s ease}.socials>a:hover{opacity:1;transform:translateY(-2px);background:#dcebe4}
 .socials svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .legal{width:min(1600px,calc(100% - 160px));min-height:34px;margin:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:flex-start;gap:24px;border-top:1px solid rgba(255,255,255,.7);font-size:9px;color:rgba(255,255,255,.94)}
 .legal>div{display:flex;gap:24px}

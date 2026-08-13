@@ -10,6 +10,7 @@ import { publishedSolutions } from "@/data/solutions";
 import { technologies } from "@/data/technologies";
 import { worlds } from "@/data/worlds";
 import { siteConfig } from "@/data/site";
+import { storySearchItems } from "@/data/stories";
 
 const isActive = (pathname: string, href: string) =>
   href === "/" ? pathname === href : pathname.startsWith(href);
@@ -43,10 +44,11 @@ export function SiteHeader() {
       ),
       ...technologies.map((item) => ({ label: item.title, href: `/technology/${item.slug}` })),
       ...products.map((item) => ({ label: item.title, href: `/products/${item.slug}` })),
+      ...storySearchItems,
     ];
 
     return items.filter(
-      (item, index) => items.findIndex((candidate) => candidate.href === item.href) === index,
+      (item, index) => items.findIndex((candidate) => candidate.href === item.href && candidate.label === item.label) === index,
     );
   }, []);
 
@@ -203,7 +205,7 @@ export function SiteHeader() {
             {searchResults.length ? (
               searchResults.map((item) => (
                 <Link
-                  key={item.href}
+                  key={`${item.href}-${item.label}`}
                   href={item.href}
                   tabIndex={isSearchOpen ? 0 : -1}
                   onClick={() => {
