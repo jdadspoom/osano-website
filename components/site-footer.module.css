@@ -1,4 +1,4 @@
-.footer{padding:0 0 12px;background:linear-gradient(110deg,#00664d 0%,#00785a 100%);color:#f8f6f0;font-family:Arial,sans-serif}
+.footer{padding:0 0 12px;background:#000;color:#f8f6f0;font-family:Arial,sans-serif}
 .columns{width:min(1600px,calc(100% - 160px));margin:auto;padding:84px 0 72px;display:grid;grid-template-columns:1.9fr .7fr .7fr .95fr;gap:clamp(34px,4vw,68px)}
 .brand{display:flex;flex-direction:column;align-items:flex-start}
 .brand img{width:125px;height:auto;filter:brightness(0) invert(1)}

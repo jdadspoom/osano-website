@@ -4,6 +4,9 @@ import { CTASection, PageHero, SectionHeading, SolutionCard, TechnologyCard } fr
 import { publishedSolutions } from "@/data/solutions";
 import { technologies } from "@/data/technologies";
 import { getWorld, worlds } from "@/data/worlds";
+import { HealthSolutionPage } from "@/components/health-solution-page";
+import { HygieneSolutionPage } from "@/components/hygiene-solution-page";
+import { PetsSolutionPage } from "@/components/pets-solution-page";
 
 export const dynamicParams = false;
 
@@ -26,6 +29,9 @@ export default async function WorldPage({ params }: PageProps<"/solutions/[world
   const { world: slug } = await params;
   const world = getWorld(slug);
   if (!world) notFound();
+  if (slug === "health") return <HealthSolutionPage />;
+  if (slug === "hygiene") return <HygieneSolutionPage />;
+  if (slug === "pets") return <PetsSolutionPage />;
   const relatedSolutions = publishedSolutions.filter((item) => item.world === world.world);
   const relatedTechnologies = technologies.filter((item) => world.relatedTechnologyIds.includes(item.id));
 

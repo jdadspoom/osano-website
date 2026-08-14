@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { DetailTemplate } from "@/components/detail-template";
 import { getTechnology, technologies } from "@/data/technologies";
+import { OxygenTechnologyPage } from "@/components/oxygen-technology-page";
+import { AqueousOzoneTechnologyPage } from "@/components/aqueous-ozone-technology-page";
+import { HydrogenTechnologyPage } from "@/components/hydrogen-technology-page";
 
 export const dynamicParams = false;
 
@@ -20,5 +23,8 @@ export default async function TechnologyDetailPage({ params }: PageProps<"/techn
   const { slug } = await params;
   const technology = getTechnology(slug);
   if (!technology) notFound();
+  if (slug === "oxygen") return <OxygenTechnologyPage />;
+  if (slug === "aqueous-ozone") return <AqueousOzoneTechnologyPage />;
+  if (slug === "hydrogen") return <HydrogenTechnologyPage />;
   return <DetailTemplate item={technology} />;
 }

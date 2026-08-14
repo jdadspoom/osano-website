@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { DetailTemplate } from "@/components/detail-template";
 import { getSolution, publishedSolutions } from "@/data/solutions";
+import { AirSolutionPage } from "@/components/air-solution-page";
 
 export const dynamicParams = false;
 
@@ -20,5 +21,6 @@ export default async function SolutionDetailPage({ params }: PageProps<"/solutio
   const { world, slug } = await params;
   const solution = getSolution(world, slug);
   if (!solution) notFound();
+  if (world === "hygiene" && slug === "air") return <AirSolutionPage />;
   return <DetailTemplate item={solution} />;
 }

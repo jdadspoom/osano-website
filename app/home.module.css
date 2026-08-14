@@ -61,3 +61,53 @@
 
 /* ScrollExpand is the desktop opening; phones retain the direct looping-video hero. */
 .mobileHero{display:none}.expandHeroCopy{width:min(1280px,calc(100% - 160px));margin-inline:auto;color:var(--green)}.expandWordmark{position:relative;width:310px;height:115px;margin-bottom:14px}.expandWordmark img{object-fit:contain;object-position:left center}.expandHeroCopy h1{margin:0 0 34px;font-size:64px;line-height:1.08}@media(max-width:900px){.mobileHero{display:block}}
+
+/* Home hero title is black across the desktop ScrollExpand and mobile video hero. */
+.expandHeroCopy h1,.heroCopy h1{color:#000}
+
+/* Philosophy intro typography and OSANO wordmark, matched to the approved reference. */
+.videoGallery>.philosophyCopy .kicker{display:flex;align-items:center;gap:10px;white-space:nowrap;letter-spacing:-.035em}
+.philosophyWordmark{position:relative;display:inline-block;flex:0 0 116px;width:116px;height:34px}
+.philosophyWordmark img{object-fit:contain;object-position:left center}
+.videoGallery>.philosophyCopy h2{letter-spacing:-.035em}
+.videoGallery>.philosophyCopy .attribution{margin-top:14px;color:#555851;font-size:9px;line-height:1.25;letter-spacing:.01em}
+@media(max-width:900px){.videoGallery>.philosophyCopy .kicker{gap:8px}.philosophyWordmark{flex-basis:100px;width:100px;height:30px}}
+@media(max-width:700px){.videoGallery>.philosophyCopy .kicker{font-size:28px}.philosophyWordmark{flex-basis:108px;width:108px;height:32px}.videoGallery>.philosophyCopy .attribution{margin-top:11px}}
+
+/* Exact desktop composition from the Home philosophy reference. */
+@media(min-width:901px){
+  .philosophy{padding:32px max(5.5vw,40px)!important;background:#f7f4ee!important}
+  .videoGallery{width:min(1240px,100%);height:380px}
+  .previous{left:36px;top:22px;width:306px;height:336px;border-radius:15px}
+  .current{left:374px;top:10px;width:674px;height:360px;border-radius:15px}
+  .next{right:0;top:22px;width:94px;height:336px;border-radius:15px}
+  .videoGallery>.philosophyCopy{left:36px;top:22px;width:306px;height:336px;padding:72px 26px 28px}
+  .videoGallery>.philosophyCopy .kicker{margin:0 0 14px;font-family:var(--font-display)!important;font-size:31px;line-height:1;letter-spacing:-.04em}
+  .philosophyWordmark{flex-basis:118px;width:118px;height:34px}
+  .videoGallery>.philosophyCopy h2{max-width:248px;margin:0;font-size:22px;line-height:1.12;letter-spacing:-.035em}
+  .videoGallery>.philosophyCopy .attribution{margin-top:14px;font-size:9px}
+  .videoGallery .current .videoCaption{display:none}
+  .videoGallery .videoPlay{width:60px;height:60px;background:rgba(255,255,255,.28);backdrop-filter:blur(3px)}
+  .videoGallery .videoPlay:after{left:25px;top:18px;border-left-width:17px;border-top-width:12px;border-bottom-width:12px}
+  .videoGallery>.videoControls button{width:38px;height:54px;border:0;background:transparent;text-shadow:0 1px 7px rgba(0,0,0,.25);font-size:34px}
+  .videoGallery>.videoControls button:first-child{left:319px}
+  .videoGallery>.videoControls button:last-child{right:16px}
+  .videoAutoProgress{left:374px;right:94px}
+}
+
+@media(max-width:900px){
+  .videoGallery>.philosophyCopy .kicker{font-family:var(--font-display)!important}
+}
+
+/* Curated Systems typography follows the reference while retaining the
+   original card scale at wide desktop sizes. */
+@media(min-width:901px){
+  .worldSection{width:min(1380px,100%);padding-top:56px;padding-bottom:0}
+  .worldSection>.eyebrow{margin-bottom:14px;font-size:10px;line-height:1;letter-spacing:.02em}
+  .worldSection>h2{margin-bottom:42px;font-size:50px;line-height:1;letter-spacing:-.035em}
+  .worldBody h3{letter-spacing:-.025em}
+  .worldBody a{font-family:var(--font-display)!important;letter-spacing:-.015em}
+  .community{padding-top:126px}
+  .community h2{font-size:64px;line-height:1;letter-spacing:-.035em}
+  .community>p{margin-top:18px;font-size:14px}
+}

@@ -2,15 +2,16 @@
 
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 import styles from "@/app/home.module.css";
 
 type HomeVideo = { id: string; title: string; label: string; src: string | null; poster: string | null };
 
 // Replace src/poster paths here when the final video files arrive.
 const homeVideos: HomeVideo[] = [
-  { id: "osano-philosophy", title: "hilosophThe OSANO Py", label: "PHILOSOPHY VIDEO", src: null, poster: "/images/home/home-health.png" },
-  { id: "better-living", title: "Technology for Better Living", label: "BETTER LIVING VIDEO", src: null, poster: "/images/home/home-community-01.webp" },
-  { id: "everyday-innovation", title: "Innovation in Everyday Life", label: "EVERYDAY INNOVATION VIDEO", src: null, poster: "/images/home/home-community-04.webp" },
+  { id: "osano-philosophy", title: "The OSANO Philosophy", label: "PHILOSOPHY VIDEO", src: null, poster: "/images/home/home-about-01.webp" },
+  { id: "better-living", title: "Technology for Better Living", label: "BETTER LIVING VIDEO", src: null, poster: "/images/home/home-about-02.webp" },
+  { id: "everyday-innovation", title: "Innovation in Everyday Life", label: "EVERYDAY INNOVATION VIDEO", src: null, poster: "/images/home/home-about-03.webp" },
 ];
 
 export function HomeVideoGallery() {
@@ -88,9 +89,13 @@ export function HomeVideoGallery() {
       >
         {card(homeVideos[previousIndex], previousIndex, "previous")}
         <div className={styles.philosophyCopy}>
-          <p className={styles.kicker}>What about <strong>OSANO</strong></p>
+          <p className={styles.kicker}>
+            <span>What about</span>
+            <span className={styles.philosophyWordmark}>
+              <Image src="/brand/OSANO_Master_Logo_Black.svg" alt="OSANO" fill sizes="120px" unoptimized />
+            </span>
+          </p>
           <h2>Technology should improve the way people live, not simply solve problems.</h2>
-          <p className={styles.attribution}>— THE OSANO PHILOSOPHY</p>
         </div>
         {card(homeVideos[activeIndex], activeIndex, "current")}
         {card(homeVideos[nextIndex], nextIndex, "next")}
