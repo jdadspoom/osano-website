@@ -8,6 +8,7 @@ import { ScrollProgress } from "@/components/scroll-progress";
 import { CardPointerEffects } from "@/components/card-pointer-effects";
 import { AmbientBackgroundMotion } from "@/components/ambient-background-motion";
 import { CinematicPageTransition } from "@/components/cinematic-page-transition";
+import { SpatialImageViewer } from "@/components/spatial-image-viewer";
 import { absoluteUrl, siteConfig } from "@/data/site";
 import "./globals.css";
 
@@ -80,6 +81,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body>
         <CinematicPageTransition />
+        <SpatialImageViewer />
         <a className="skip-link" href="#main-content">
           Skip to main content
         </a>

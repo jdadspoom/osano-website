@@ -6,7 +6,7 @@ const paths = [
     number: "01",
     title: "Oxygen",
     description: "Breathe better.",
-    image: "/images/solutions/health/health-oxygen.png",
+    image: "/images/solutions/health/health-oxygen.png?v=20260814",
   },
   {
     number: "02",

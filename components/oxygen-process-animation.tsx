@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import type { CSSProperties, FocusEvent, KeyboardEvent, PointerEvent } from "react";
+import type { CSSProperties, KeyboardEvent } from "react";
+import { createPortal } from "react-dom";
 
 const stepDetails = {
   1: { number: "01", eyebrow: "INPUT", title: "Ambient Air", summary: "Air from the surrounding environment enters the system.", details: ["Contains oxygen and nitrogen", "Drawn in continuously and quietly"] },
@@ -28,23 +29,6 @@ const outputParticles = [[1010, 380], [1060, 420], [1110, 365], [1160, 445], [12
 
 export function OxygenProcessAnimation({ storyStep = 0 }: { storyStep?: number }) {
   const [activeStep, setActiveStep] = useState<StepNumber | null>(null);
-  const [cardPosition, setCardPosition] = useState({ x: 0, y: 0 });
-
-  const positionFromPointer = (event: PointerEvent<SVGGElement>) => {
-    setCardPosition({
-      x: Math.max(12, Math.min(event.clientX + 18, window.innerWidth - 352)),
-      y: Math.max(12, Math.min(event.clientY + 18, window.innerHeight - 260)),
-    });
-  };
-
-  const showFromFocus = (step: StepNumber, event: FocusEvent<SVGGElement>) => {
-    const bounds = event.currentTarget.getBoundingClientRect();
-    setActiveStep(step);
-    setCardPosition({
-      x: Math.max(12, Math.min(bounds.right + 14, window.innerWidth - 352)),
-      y: Math.max(12, Math.min(bounds.top, window.innerHeight - 260)),
-    });
-  };
 
   const keyboardToggle = (step: StepNumber, event: KeyboardEvent<SVGGElement>) => {
     if (event.key === "Enter" || event.key === " ") {
@@ -57,10 +41,9 @@ export function OxygenProcessAnimation({ storyStep = 0 }: { storyStep?: number }
     tabIndex: 0,
     role: "button" as const,
     "aria-label": `Learn more about step ${step}: ${stepDetails[step].title}`,
-    onPointerEnter: (event: PointerEvent<SVGGElement>) => { setActiveStep(step); positionFromPointer(event); },
-    onPointerMove: positionFromPointer,
+    onPointerEnter: () => setActiveStep(step),
     onPointerLeave: () => setActiveStep(null),
-    onFocus: (event: FocusEvent<SVGGElement>) => showFromFocus(step, event),
+    onFocus: () => setActiveStep(step),
     onBlur: () => setActiveStep(null),
     onClick: () => setActiveStep((current) => current === step ? null : step),
     onKeyDown: (event: KeyboardEvent<SVGGElement>) => keyboardToggle(step, event),
@@ -201,13 +184,14 @@ export function OxygenProcessAnimation({ storyStep = 0 }: { storyStep?: number }
         </g>
       </g>
     </svg>
-    {activeStep && (
-      <aside className="psa-hover-card" style={{ left: cardPosition.x, top: cardPosition.y }} role="status">
+    {activeStep && createPortal(
+      <aside className="psa-hover-card" role="status">
         <div className="psa-hover-card-head"><span>{stepDetails[activeStep].number}</span><small>{stepDetails[activeStep].eyebrow}</small></div>
         <h3>{stepDetails[activeStep].title}</h3>
         <p>{stepDetails[activeStep].summary}</p>
         <ul>{stepDetails[activeStep].details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
-      </aside>
+      </aside>,
+      document.body,
     )}
     </div>
   );

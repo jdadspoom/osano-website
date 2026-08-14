@@ -19,7 +19,7 @@ const pillars = [
 export default function CommunityPage() {
   return <div className={styles.page}>
     <section className={styles.hero}>
-      <div className={styles.heroMedia}><Image src="/images/community/community-hero.webp" alt="People connecting through the OSANO community" fill priority sizes="100vw" /></div>
+      <div className={styles.heroMedia} role="button" tabIndex={0} data-spatial-src="/images/community/community-hero.webp" data-spatial-title="Osano Community" data-spatial-copy="A space to connect, share and discover better ways of living."><Image src="/images/community/community-hero.webp" alt="People connecting through the OSANO community" fill priority sizes="100vw" /></div>
       <div className={styles.heroCopy}><p>CONNECT / SHARE / GROW</p><h1>Osano<br />Community</h1><span>A space to connect, share, and discover better ways of living through innovation.</span><nav><Link href="#learning">Explore Our Solutions</Link><Link href="/technology">Our Technology</Link></nav></div>
     </section>
     <section className={styles.pillars}>
@@ -28,7 +28,7 @@ export default function CommunityPage() {
     </section>
     <section className={styles.learning} id="learning">
       <div><p>INTERACTIVE LEARNING</p><h2>Learn by experiencing.</h2><span>Join workshops and activities designed to turn ideas into practical, everyday experiences.</span><Link href="#activities">Explore Activities</Link></div>
-      <div className={styles.learningMedia}><Image src="/images/community/community-learning.webp" alt="An interactive OSANO community learning session" fill sizes="(max-width: 800px) 100vw, 52vw" /></div>
+      <div className={styles.learningMedia} role="button" tabIndex={0} data-spatial-src="/images/community/community-learning.webp" data-spatial-title="Learn by experiencing" data-spatial-copy="Interactive learning that turns ideas into practical everyday experiences."><Image src="/images/community/community-learning.webp" alt="An interactive OSANO community learning session" fill sizes="(max-width: 800px) 100vw, 52vw" /></div>
     </section>
     <section className={styles.activities} id="activities"><h2>Upcoming Activities</h2><div className={styles.table}><b>Date</b><b>Title</b><b>Format</b><b>Location</b><b>Status</b>{[["Oct 14, 2026", "Discover Hydrogen Water", "Live Interactive", "Digital Portal", "Open"], ["Oct 28, 2026", "Discover Aqueous Ozone", "Hands-on Lab", "Osano Hub", "Filling Fast"], ["Nov 12, 2026", "Safe Air and Pet Longevity Ecosystems", "Lecture & Panel", "Digital Portal", "Open"]].flatMap(row => row.map(value => <span key={`${row[0]}-${value}`}>{value}</span>))}</div></section>
     <section className={styles.insights}>

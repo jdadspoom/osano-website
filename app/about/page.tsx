@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../about.module.css";
 import { siteConfig } from "@/data/site";
+import { ScrollLinkedTitle } from "@/components/scroll-linked-title";
 
 export const metadata: Metadata = { title: "About OSANO", description: siteConfig.statement, alternates: { canonical: "/about" } };
 
@@ -23,7 +24,7 @@ export default function AboutPage() {
     <section className={styles.story}>
       <p className={styles.label}>OUR STORY</p>
       <header>
-        <h2>Better living is a relationship.</h2>
+        <ScrollLinkedTitle text="Better living is a relationship." />
         <p>Everyday well-being connects people, living environments and pets.<br />Osano studies context before shaping a practical way forward.</p>
       </header>
       <ol className={styles.storySteps}>

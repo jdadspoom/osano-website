@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { BeforeAfterComparison } from "@/components/before-after-comparison";
 
 const hygieneSpaces = [
   { title: "Kitchen", caption: "Clean water", image: "/images/solutions/hygiene/hygiene-kitchen.png", href: "/solutions/hygiene/water-surface" },
@@ -31,6 +32,21 @@ export function HygieneSolutionPage() {
           <h2>Hygiene begins<br />with the<br />environment.</h2>
           <p>Water. Air. The spaces around you.</p>
         </div>
+      </section>
+
+      <section className="clean-hygiene-comparison" aria-labelledby="hygiene-comparison-title">
+        <div className="clean-hygiene-comparison-copy">
+          <p className="clean-hygiene-kicker">A CLOSER LOOK</p>
+          <h2 id="hygiene-comparison-title">See the environment differently.</h2>
+          <p>Drag the control to explore two everyday hygiene contexts.</p>
+        </div>
+        <BeforeAfterComparison
+          beforeSrc="/images/solutions/hygiene/hygiene-living-space.png"
+          afterSrc="/images/solutions/hygiene/hygiene-air-solutions.png"
+          beforeLabel="Everyday space"
+          afterLabel="Hygiene designed in"
+        />
+        <p className="clean-hygiene-comparison-note">Prototype imagery — final comparison photography can be added later.</p>
       </section>
 
       <section className="clean-hygiene-solutions" id="hygiene-solutions">

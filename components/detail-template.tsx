@@ -2,6 +2,7 @@ import type { Product, Solution, Technology } from "@/types/content";
 import { MediaPlaceholder } from "./media-placeholder";
 import { RelatedContent } from "./related-content";
 import { CTASection, PageHero, SectionHeading } from "./ui";
+import { CinematicProductReveal } from "./cinematic-product-reveal";
 
 type Detail = Product | Solution | Technology;
 
@@ -28,20 +29,30 @@ export function DetailTemplate({ item }: { item: Detail }) {
 
   return (
     <>
-      <PageHero
-        eyebrow={item.eyebrow}
-        title={item.title}
-        summary={item.summary}
-        media={item.heroMedia}
-        tone={tone}
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          parent,
-          { label: item.title },
-        ]}
-      />
+      {isProduct(item) ? (
+        <CinematicProductReveal
+          eyebrow={item.eyebrow}
+          title={item.title}
+          summary={item.summary}
+          collectionLabel={`${item.category.replaceAll("-", " ")} collection`}
+          imageSrc={item.slug === "de8-unit" ? "/images/technology/oxygen/oxygen-hero.webp" : undefined}
+        />
+      ) : (
+        <PageHero
+          eyebrow={item.eyebrow}
+          title={item.title}
+          summary={item.summary}
+          media={item.heroMedia}
+          tone={tone}
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            parent,
+            { label: item.title },
+          ]}
+        />
+      )}
 
-      <section className="editorial-split section-pad">
+      <section className="editorial-split section-pad" id="product-details">
         <div className="shell editorial-split-grid">
           <SectionHeading eyebrow="The context" title={context} />
           <div className="editorial-body">

@@ -32,7 +32,7 @@ function MediaPlaceholder({ label, kind = "image", className, duration }: MediaP
 export default function StoriesPage() {
   return (
     <div className={styles.page}>
-      <section className={styles.hero} aria-labelledby="stories-title">
+      <section className={styles.hero} aria-labelledby="stories-title" data-spatial-src="/images/stories/stories-hero.webp" data-spatial-title="Explore ideas. Inspire better living." data-spatial-copy="Ideas, experiences and stories that inspire better ways of living.">
         <Image src="/images/stories/stories-hero.webp" alt="An open book beside water and greenery in a calm living space" fill priority sizes="100vw" className={styles.heroMedia} />
         <div className={styles.heroOverlay} />
         <div className={styles.heroInner}>
