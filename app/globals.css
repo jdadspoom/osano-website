@@ -631,9 +631,9 @@ body :where(p, a, button, input, select, textarea, label, legend, li, small) {
 }
 
 .pets-world-hero {
-  min-height: 42rem;
+  height: clamp(34rem, 36vw, 44rem);
   display: grid;
-  grid-template-columns: 39% 61%;
+  grid-template-columns: 40% 60%;
 }
 
 .pets-world-hero-copy {
@@ -641,19 +641,21 @@ body :where(p, a, button, input, select, textarea, label, legend, li, small) {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: clamp(3rem, 6vw, 7rem);
+  padding: clamp(2rem, 3vw, 4.7rem);
   background: var(--pets-orange);
   color: #fff;
 }
 
-.pets-world-hero-copy h1 {
-  margin-bottom: 2rem;
-  font-size: clamp(3.6rem, 5vw, 5.8rem);
-  line-height: 1.03;
+#main-content .pets-world-hero-copy h1 {
+  margin-bottom: 0.65rem;
+  color: #fff !important;
+  font-size: clamp(3rem, 4.25vw, 4.3rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
 }
 
 .pets-world-hero-copy > p:not(.pets-world-kicker) {
-  margin-bottom: 2.2rem;
+  margin-bottom: 1.25rem;
   color: rgba(255, 255, 255, 0.85);
 }
 
@@ -787,7 +789,7 @@ body :where(p, a, button, input, select, textarea, label, legend, li, small) {
 .pets-world-closing-image { margin: 1.7rem 1.7rem 1.7rem 0; border-radius: 0.45rem; }
 
 @media (max-width: 760px) {
-  .pets-world-hero { min-height: 0; grid-template-columns: 1fr; }
+  .pets-world-hero { height: auto; min-height: 0; grid-template-columns: 1fr; }
   .pets-world-hero-copy { min-height: 31rem; padding: 4rem 1.5rem; }
   .pets-world-hero-image { min-height: 29rem; }
   .pets-world-principle {
