@@ -55,7 +55,7 @@ export function CinematicProductReveal({
       <div className="product-reveal__sticky">
         <div className="product-reveal__media" aria-hidden="true">
           {imageSrc ? (
-            <Image src={imageSrc} alt="" fill priority sizes="100vw" />
+            <Image src={imageSrc} alt="" fill loading="eager" sizes="100vw" />
           ) : (
             <div className="product-reveal__placeholder">
               <span>{title.slice(0, 3).toUpperCase()}</span>
@@ -77,7 +77,7 @@ export function CinematicProductReveal({
           <a href="#product-details">Discover the approach <span aria-hidden="true">&darr;</span></a>
         </div>
         <div className="product-reveal__progress" aria-hidden="true"><span /></div>
-        <p className="product-reveal__prototype">{imageSrc ? "Prototype imagery" : "Image placeholder"}</p>
+        <p className="product-reveal__prototype">{imageSrc ? "Preview imagery" : "Product imagery coming soon"}</p>
       </div>
     </section>
   );

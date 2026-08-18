@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { OxygenScrollStory } from "@/components/oxygen-scroll-story";
+import { OsanoEmptyArtwork } from "@/components/osano-empty-artwork";
 
 const applications = [
   { number: "01", title: "HOME", description: "Personal wellness" },
@@ -9,15 +10,15 @@ const applications = [
 ];
 
 function OxygenPlaceholder({ label }: { label: string }) {
-  return <div className="oxygen-placeholder" role="img" aria-label={`${label} image placeholder`}><span>IMAGE PLACEHOLDER</span><small>{label}</small></div>;
+  return <div className="oxygen-placeholder"><OsanoEmptyArtwork label={label} tone="technology" /></div>;
 }
 
 export function OxygenTechnologyPage() {
   return (
-    <main className="oxygen-page">
+    <div className="oxygen-page">
       <section className="oxygen-hero">
         <div className="oxygen-hero-image">
-          <Image src="/images/technology/oxygen/oxygen-hero.webp" alt="Oxygen refinement technology chamber" fill priority sizes="(max-width: 760px) 100vw, 56vw" />
+          <Image src="/images/technology/oxygen/oxygen-hero.webp" alt="Oxygen refinement technology chamber" fill loading="eager" sizes="(max-width: 760px) 100vw, 56vw" />
         </div>
         <div className="oxygen-hero-copy">
           <p className="oxygen-kicker">OXYGEN TECHNOLOGY</p>
@@ -54,6 +55,6 @@ export function OxygenTechnologyPage() {
         </div>
         <Link href="/solutions/health">Explore oxygen solutions <span aria-hidden="true">→</span></Link>
       </section>
-    </main>
+    </div>
   );
 }

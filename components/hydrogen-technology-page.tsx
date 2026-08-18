@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { OsanoEmptyArtwork } from "@/components/osano-empty-artwork";
 
 const applications = [
   { number: "01", title: "HOME", description: "Daily hydration" },
@@ -7,12 +8,12 @@ const applications = [
 ];
 
 function HydrogenPlaceholder({ label }: { label: string }) {
-  return <div className="hydrogen-placeholder" role="img" aria-label={`${label} image placeholder`}><span>IMAGE PLACEHOLDER</span><small>{label}</small></div>;
+  return <div className="hydrogen-placeholder"><OsanoEmptyArtwork label={label} tone="health" /></div>;
 }
 
 export function HydrogenTechnologyPage() {
   return (
-    <main className="hydrogen-page">
+    <div className="hydrogen-page">
       <section className="hydrogen-hero">
         <div className="hydrogen-hero-copy">
           <p className="hydrogen-kicker">HYDROGEN TECHNOLOGY</p>
@@ -56,6 +57,6 @@ export function HydrogenTechnologyPage() {
         </div>
         <Link href="/solutions/health">Explore hydrogen solutions <span aria-hidden="true">→</span></Link>
       </section>
-    </main>
+    </div>
   );
 }

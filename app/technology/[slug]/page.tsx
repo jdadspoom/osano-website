@@ -5,6 +5,7 @@ import { getTechnology, technologies } from "@/data/technologies";
 import { OxygenTechnologyPage } from "@/components/oxygen-technology-page";
 import { AqueousOzoneTechnologyPage } from "@/components/aqueous-ozone-technology-page";
 import { HydrogenTechnologyPage } from "@/components/hydrogen-technology-page";
+import { createPageMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: PageProps<"/technology/[slug]
   const { slug } = await params;
   const technology = getTechnology(slug);
   if (!technology) return {};
-  return { title: { absolute: technology.seoTitle }, description: technology.seoDescription, alternates: { canonical: `/technology/${technology.slug}` } };
+  return createPageMetadata(technology.seoTitle, technology.seoDescription, `/technology/${technology.slug}`);
 }
 
 export default async function TechnologyDetailPage({ params }: PageProps<"/technology/[slug]">) {

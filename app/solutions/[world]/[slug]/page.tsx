@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { DetailTemplate } from "@/components/detail-template";
 import { getSolution, publishedSolutions } from "@/data/solutions";
 import { AirSolutionPage } from "@/components/air-solution-page";
+import { createPageMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -14,7 +15,7 @@ export async function generateMetadata({ params }: PageProps<"/solutions/[world]
   const { world, slug } = await params;
   const solution = getSolution(world, slug);
   if (!solution) return {};
-  return { title: { absolute: solution.seoTitle }, description: solution.seoDescription, alternates: { canonical: solution.route ?? "/solutions" } };
+  return createPageMetadata(solution.seoTitle, solution.seoDescription, solution.route ?? "/solutions");
 }
 
 export default async function SolutionDetailPage({ params }: PageProps<"/solutions/[world]/[slug]">) {

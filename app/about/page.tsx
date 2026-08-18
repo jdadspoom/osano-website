@@ -4,12 +4,13 @@ import Link from "next/link";
 import styles from "../about.module.css";
 import { siteConfig } from "@/data/site";
 import { ScrollLinkedTitle } from "@/components/scroll-linked-title";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "About OSANO", description: siteConfig.statement, alternates: { canonical: "/about" } };
+export const metadata: Metadata = createPageMetadata("About OSANO", siteConfig.statement, "/about");
 
 export default function AboutPage() {
   return <div className={styles.page}>
-    <section className={styles.hero}><Image src="/images/about/about-hero.png" alt="Family sharing an OSANO-inspired everyday moment" fill priority sizes="100vw" className={styles.heroPhoto} /><div className={styles.heroCopy}><p className={styles.label}>ABOUT OSANO</p><h1>The Innovative<br />Lifestyle</h1><p>Meaningful innovation for better everyday living.</p><a href="#purpose" className={styles.primary}>Explore our philosophy</a></div></section>
+    <section className={styles.hero}><Image src="/images/about/about-hero.png" alt="Family sharing an OSANO-inspired everyday moment" fill loading="eager" sizes="100vw" className={styles.heroPhoto} /><div className={styles.heroCopy}><p className={styles.label}>ABOUT OSANO</p><h1>The Innovative<br />Lifestyle</h1><p>Meaningful innovation for better everyday living.</p><a href="#purpose" className={styles.primary}>Explore our philosophy</a></div></section>
     <section className={styles.purpose} id="purpose">
       <div className={styles.purposeCopy}>
         <p className={styles.label}>OUR PURPOSE</p>
@@ -25,7 +26,7 @@ export default function AboutPage() {
       <p className={styles.label}>OUR STORY</p>
       <header>
         <ScrollLinkedTitle text="Better living is a relationship." />
-        <p>Everyday well-being connects people, living environments and pets.<br />Osano studies context before shaping a practical way forward.</p>
+        <p>Everyday well-being connects people, living environments and pets.<br />OSANO studies context before shaping a practical way forward.</p>
       </header>
       <ol className={styles.storySteps}>
         <li>

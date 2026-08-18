@@ -16,7 +16,7 @@ export const worlds: World[] = [
     slug: "health",
     title: "OSANO Health",
     eyebrow: "Everyday vitality",
-    summary: "Thoughtful environments for clarity, balance and daily wellbeing.",
+    summary: "Thoughtful environments for clarity, balance and daily well-being.",
     description:
       "OSANO Health brings purposeful innovation into the rhythms of everyday life, with a calm focus on people, context and lasting quality.",
     world: "health",

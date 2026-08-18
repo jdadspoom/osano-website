@@ -73,7 +73,7 @@ export function CinematicPageTransition() {
     <div className={`cinematic-transition cinematic-transition--${phase}`} aria-hidden="true">
       <div className="cinematic-transition__veil" />
       <div className="cinematic-transition__brand">
-        <Image src="/brand/OSANO_Master_Logo_Black.svg" alt="" width={220} height={58} unoptimized />
+        <Image src="/brand/OSANO_Master_Logo_Black.svg" alt="" width={220} height={58} loading="eager" unoptimized />
         <span>THE INNOVATIVE LIFESTYLE</span>
       </div>
     </div>

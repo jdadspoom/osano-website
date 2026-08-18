@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "OSANO",
   statement:
-    "Innovation designed for better everyday living.Across health, hygiene, and life with pets",
+    "Innovation designed for better everyday living. Across health, hygiene and life with pets.",
   shortStatement: "Technology in step with everyday life.",
   defaultDescription:
     "Discover OSANO solutions connecting purposeful technology with healthier, cleaner and more considered everyday living.",

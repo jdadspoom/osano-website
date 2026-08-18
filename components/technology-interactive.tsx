@@ -5,7 +5,7 @@ import styles from "@/app/technology.module.css";
 import { Molecule3D } from "@/components/molecule-3d";
 
 const steps = [
-  { key:"Principle", title:"Principle: How the Technology Works", copy:"Every technology starts with a core scientific principle. This layer explains how it works, from its fundamental properties to real-world applications.", points:["Core scientific principles and key reactions explained clearly.","Key properties and molecular behaviors under everyday environmental conditions."] },
+  { key:"Principle", title:"Principle: How the Technology Works", copy:"Every technology starts with a core scientific principle. This layer explains how it works, from its fundamental properties to real-world applications.", points:["Core scientific principles and key reactions explained clearly.","Key properties and molecular behaviours under everyday environmental conditions."] },
   { key:"Application", title:"Application: From Science to Everyday Life", copy:"The scientific principle becomes useful when it responds to real needs in health, hygiene and living environments.", points:["Practical uses are considered within real routines and environments.","Each application connects the technology to a clear everyday benefit."] },
   { key:"Format", title:"Format: Choosing the Right Experience", copy:"Different formats make each technology suitable for different spaces, routines and desired outcomes.", points:["The delivery format is matched to the intended use and environment.","Products make advanced science simple to experience."] },
 ];

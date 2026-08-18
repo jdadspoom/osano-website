@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { OsanoEmptyArtwork } from "@/components/osano-empty-artwork";
 
 const applications = [
   { number: "01", title: "HOME", description: "Everyday hygiene" },
@@ -9,12 +10,12 @@ const applications = [
 ];
 
 function OzonePlaceholder({ label }: { label: string }) {
-  return <div className="ozone-placeholder" role="img" aria-label={`${label} image placeholder`}><span>IMAGE PLACEHOLDER</span><small>{label}</small></div>;
+  return <div className="ozone-placeholder"><OsanoEmptyArtwork label={label} tone="hygiene" /></div>;
 }
 
 export function AqueousOzoneTechnologyPage() {
   return (
-    <main className="ozone-page">
+    <div className="ozone-page">
       <section className="ozone-hero">
         <div className="ozone-hero-copy">
           <p className="ozone-kicker">AQUEOUS OZONE TECHNOLOGY</p>
@@ -23,7 +24,7 @@ export function AqueousOzoneTechnologyPage() {
           <a href="#ozone-applications">Explore applications <span aria-hidden="true">→</span></a>
         </div>
         <div className="ozone-hero-image">
-          <Image src="/images/technology/aqueous-ozone/ozone-hero.png" alt="Activated water flowing into a clear glass" fill priority sizes="(max-width: 760px) 100vw, 54vw" />
+          <Image src="/images/technology/aqueous-ozone/ozone-hero.png" alt="Activated water flowing into a clear glass" fill loading="eager" sizes="(max-width: 760px) 100vw, 54vw" />
         </div>
       </section>
 
@@ -59,6 +60,6 @@ export function AqueousOzoneTechnologyPage() {
         </div>
         <Link href="/solutions/hygiene">Explore hygiene solutions <span aria-hidden="true">→</span></Link>
       </section>
-    </main>
+    </div>
   );
 }

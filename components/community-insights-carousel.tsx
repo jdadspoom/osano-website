@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { KeyboardEvent, useEffect, useState } from "react";
 import styles from "@/app/community.module.css";
 
 const insights = [
@@ -44,10 +44,25 @@ export function CommunityInsightsCarousel() {
 
   const active = insights[activeIndex];
   const remaining = insights.filter((_, index) => index !== activeIndex);
+  const onCarouselKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      setActiveIndex(index => Math.max(0, index - 1));
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      setActiveIndex(index => Math.min(insights.length - 1, index + 1));
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      setActiveIndex(0);
+    } else if (event.key === "End") {
+      event.preventDefault();
+      setActiveIndex(insights.length - 1);
+    }
+  };
 
-  return <div className={styles.insightsCarousel} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
+  return <div className={styles.insightsCarousel} tabIndex={0} role="group" aria-roledescription="carousel" aria-label="Community insights" onKeyDown={onCarouselKeyDown} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
     <Link href="/stories" className={styles.insightFeature} key={active.image}>
-      <Image src={active.image} alt={active.title} fill sizes="(max-width: 800px) 100vw, 58vw" priority={activeIndex === 0} />
+      <Image src={active.image} alt={active.title} fill sizes="(max-width: 800px) calc(100vw - 40px), 58vw" loading={activeIndex === 0 ? "eager" : "lazy"} />
       <div className={styles.featureCopy}><p>{active.label}</p><h3>{active.title}</h3><span>{active.description}</span></div>
     </Link>
     <aside>{remaining.map(item => {
@@ -57,6 +72,6 @@ export function CommunityInsightsCarousel() {
         <span><small>{item.label}</small>{item.title}</span>
       </button>;
     })}</aside>
-    <div className={styles.insightDots} aria-label="Choose community insight">{insights.map((item, index) => <button type="button" key={item.title} className={index === activeIndex ? styles.activeDot : ""} onClick={() => setActiveIndex(index)} aria-label={`Show slide ${index + 1}`} aria-current={index === activeIndex ? "true" : undefined} />)}</div>
+    <div className={styles.insightDots} aria-label="Choose community insight">{insights.map((item, index) => <button type="button" key={item.title} className={index === activeIndex ? styles.activeDot : ""} onClick={() => setActiveIndex(index)} aria-label={`Show slide ${index + 1}: ${item.title}`} aria-pressed={index === activeIndex} />)}</div>
   </div>;
 }

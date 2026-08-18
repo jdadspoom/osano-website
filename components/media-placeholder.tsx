@@ -16,7 +16,7 @@ export function MediaPlaceholder({ media, tone = "neutral", priority }: Props) {
           alt={media.alt ?? media.label}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          priority={priority}
+          loading={priority ? "eager" : "lazy"}
         />
       </figure>
     );

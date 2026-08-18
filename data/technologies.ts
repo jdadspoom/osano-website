@@ -6,9 +6,9 @@ const common = {
     { kind: "image" as const, label: "Technology Detail Image" },
     { kind: "image" as const, label: "Material and Context Image" },
   ],
-  video: { kind: "video" as const, label: "Technology Film Coming Soon" },
+  video: { kind: "video" as const, label: "Technology film coming soon" },
   documents: [
-    { kind: "document" as const, label: "Technical Document Coming Soon" },
+    { kind: "document" as const, label: "Technical document coming soon" },
   ],
   relatedSolutionIds: [],
 };

@@ -1,6 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 import { siteConfig } from "@/data/site";
+import { ConsentSettingsButton } from "@/components/privacy-consent";
 import styles from "./site-footer.module.css";
 
 const solutions=[
@@ -16,13 +20,26 @@ const company=[
 ] as const;
 
 export function SiteFooter(){
-  return <footer className={styles.footer}>
+  const footerRef=useRef<HTMLElement>(null);
+
+  useEffect(()=>{
+    const footer=footerRef.current;
+    if(!footer)return;
+    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){footer.dataset.visible="true";return;}
+    const observer=new IntersectionObserver(([entry])=>{
+      footer.dataset.visible=String(entry.isIntersecting);
+    },{threshold:.14});
+    observer.observe(footer);
+    return()=>observer.disconnect();
+  },[]);
+
+  return <footer ref={footerRef} className={styles.footer}>
     <div className={styles.columns}>
       <div className={styles.brand}>
         <Link href="/" aria-label="OSANO home">
           <Image src={siteConfig.logo} alt="OSANO" width={210} height={48}/>
         </Link>
-        <p>Innovation designed for better everyday living.<br/>Across health, hygiene, and life with pets.</p>
+        <p>Innovation designed for better everyday living.<br/>Across health, hygiene and life with pets.</p>
       </div>
       <div className={styles.column}>
         <h2>SOLUTIONS</h2>
@@ -48,7 +65,7 @@ export function SiteFooter(){
     </div>
     <div className={styles.legal}>
       <span className={styles.copyright}>© {new Date().getFullYear()} OSANO Lifestyle Technology. All rights reserved.</span>
-      <div><span>Privacy Policy</span><span>Terms of Use</span><span>Accessibility</span></div>
+      <div><Link href="/privacy">Privacy Policy</Link><ConsentSettingsButton /><span>Terms of Use</span><span>Accessibility</span></div>
     </div>
   </footer>;
 }

@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 import styles from "@/app/stories.module.css";
 
 type StoryArticle = {
@@ -15,11 +16,11 @@ type StoryArticle = {
 };
 
 const articles: StoryArticle[] = [
-  { id: "better-home", category: "Well-being", title: "A practical guide to better living at home.", summary: "Explore how air, water, and thoughtful technology can support a healthier, more comfortable everyday living environment.", body: ["Better living begins with understanding the routines and environments that shape each day.", "Thoughtful choices around air, water and the way a space is used can make well-being feel natural rather than complicated.", "This prototype article will be replaced with the final editorial content when it is ready."], recommended: true },
+  { id: "better-home", category: "Well-being", title: "A practical guide to better living at home", summary: "Explore how air, water and thoughtful technology can support a healthier, more comfortable everyday living environment.", body: ["Better living begins with understanding the routines and environments that shape each day.", "Thoughtful choices around air, water and the way a space is used can make well-being feel natural rather than complicated.", "This preview article will be replaced with the final editorial content when it is ready."], recommended: true },
   { id: "cleaner-environment", category: "Hygiene", title: "Creating a cleaner environment for everyday living", summary: "Discover practical ideas for creating cleaner, healthier spaces in everyday life.", body: ["A clean environment should support everyday life without adding unnecessary complexity.", "This guide explores simple habits and technologies that can work together across frequently used spaces."], recommended: true },
   { id: "aqueous-ozone", category: "Technology", title: "Aqueous Ozone for Everyday Hygiene", summary: "Discover practical ways Aqueous Ozone can support cleaner everyday living.", body: ["Aqueous ozone offers a different way to think about everyday hygiene.", "The article introduces the technology, useful contexts and practical considerations for daily use."], recommended: true },
   { id: "life-with-pets", category: "Pets", title: "Creating Better Spaces for Life with Pets", summary: "Discover practical ideas for cleaner, more comfortable spaces for life with pets.", body: ["Living well with pets means considering comfort, cleanliness and shared routines together.", "Small environmental improvements can support both companion animals and the people around them."], recommended: true },
-  { id: "hydrogen-water", category: "Health", title: "Hydrogen Water for Everyday Well-Being", summary: "Discover simple ways Hydrogen Water can become part of everyday well-being.", body: ["Hydration is one of the simplest foundations of everyday well-being.", "This prototype article explores how hydrogen water may fit into a thoughtful daily routine."], recommended: true },
+  { id: "hydrogen-water", category: "Health", title: "Hydrogen water for everyday well-being", summary: "Discover simple ways hydrogen water can become part of everyday well-being.", body: ["Hydration is one of the simplest foundations of everyday well-being.", "This preview article explores how hydrogen water may fit into a thoughtful daily routine."], recommended: true },
   { id: "shared-knowledge", category: "Community", title: "When shared knowledge becomes useful", summary: "See how experience and conversation can turn ideas into practical choices.", body: ["Knowledge becomes more useful when people can connect it to real situations.", "Community learning creates space to compare experiences and discover practical ways forward."] },
   { id: "healthy-workplace", category: "Business", title: "Thoughtful environments for healthier work", summary: "Ideas for creating comfortable, supportive spaces throughout the working day.", body: ["Work environments influence focus, comfort and everyday experience.", "A thoughtful approach brings people, routines and environmental systems into the same conversation."] },
 ];
@@ -28,11 +29,12 @@ const filters = ["All articles", "Well-being", "Technology", "Hygiene", "Health"
 const PAGE_SIZE = 5;
 
 function ArticleArtwork({ article }: { article: StoryArticle }) {
-  return article.imageUrl ? <img src={article.imageUrl} alt="" /> : <span aria-hidden="true">ARTICLE IMAGE</span>;
+  return article.imageUrl ? <Image src={article.imageUrl} alt="" fill sizes="(max-width: 700px) calc(100vw - 40px), 34vw" /> : <span aria-hidden="true">ARTICLE IMAGE</span>;
 }
 
 export function StoriesArticleBrowser() {
   const articleListRef = useRef<HTMLDivElement>(null);
+  const modalCloseRef = useRef<HTMLButtonElement>(null);
   const [mounted, setMounted] = useState(false);
   const [filter, setFilter] = useState("All articles");
   const [page, setPage] = useState(0);
@@ -44,14 +46,24 @@ export function StoriesArticleBrowser() {
   const visible = filtered.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE);
   const featured = recommended[recommendedIndex];
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    const timer = window.setTimeout(() => setMounted(true), 0);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (!openArticle) return;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const focusFrame = window.requestAnimationFrame(() => modalCloseRef.current?.focus());
     const close = (event: KeyboardEvent) => { if (event.key === "Escape") setOpenArticle(null); };
     document.addEventListener("keydown", close);
     document.body.style.overflow = "hidden";
-    return () => { document.removeEventListener("keydown", close); document.body.style.overflow = ""; };
+    return () => {
+      window.cancelAnimationFrame(focusFrame);
+      document.removeEventListener("keydown", close);
+      document.body.style.overflow = "";
+      previousFocus?.focus();
+    };
   }, [openArticle]);
 
   const changeFilter = (value: string) => { setFilter(value); setPage(0); };
@@ -73,6 +85,6 @@ export function StoriesArticleBrowser() {
     <div className={styles.articleCards} ref={articleListRef}>{visible.map(article => <article key={article.id}><div className={styles.articleCardCopy}><p>{article.category}</p><h3>{article.title}</h3><span>{article.summary}</span><button type="button" onClick={() => setOpenArticle(article)}>Read the story →</button></div><div className={styles.articleCardArtwork}><ArticleArtwork article={article} /></div></article>)}</div>
     <div className={styles.articlePagination}><button type="button" onClick={() => changePage(Math.max(0, page - 1))} disabled={page === 0} aria-label="Previous five articles">←</button><span>{page + 1} / {pageCount}</span><button type="button" onClick={() => changePage(Math.min(pageCount - 1, page + 1))} disabled={page >= pageCount - 1} aria-label="Next five articles">→</button></div>
 
-    {mounted && openArticle && createPortal(<div className={styles.articleModal} role="dialog" aria-modal="true" aria-labelledby="article-modal-title" onMouseDown={event => { if (event.target === event.currentTarget) setOpenArticle(null); }}><article><button type="button" className={styles.articleModalClose} onClick={() => setOpenArticle(null)} aria-label="Close article">×</button><p>{openArticle.category}</p><h2 id="article-modal-title">{openArticle.title}</h2><strong>{openArticle.summary}</strong>{openArticle.body.map(paragraph => <span key={paragraph}>{paragraph}</span>)}</article></div>, document.body)}
+    {mounted && openArticle && createPortal(<div className={styles.articleModal} role="dialog" aria-modal="true" aria-labelledby="article-modal-title" onMouseDown={event => { if (event.target === event.currentTarget) setOpenArticle(null); }}><article><button ref={modalCloseRef} type="button" className={styles.articleModalClose} onClick={() => setOpenArticle(null)} aria-label="Close article">×</button><p>{openArticle.category}</p><h2 id="article-modal-title">{openArticle.title}</h2><strong>{openArticle.summary}</strong>{openArticle.body.map(paragraph => <span key={paragraph}>{paragraph}</span>)}</article></div>, document.body)}
   </section>;
 }

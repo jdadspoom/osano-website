@@ -8,9 +8,9 @@ import { resolvePublicImage } from "@/lib/public-image";
 import { ScrollExpand } from "@/components/scroll-expand";
 
 const worlds = [
-  { title: "Osano Hygiene", tone: "hygiene", icon: "/images/home/icons/home-hygiene-icon.svg", tags: ["Air", "Water", "Surface"], href: "/solutions/hygiene", image: resolvePublicImage("images/home/home-hygiene"), position: "center 58%" },
-  { title: "Osano Health", tone: "health", icon: "/images/home/icons/home-health-icon.svg", tags: ["Vitality", "Longevity", "Balance"], href: "/solutions/health", image: resolvePublicImage("images/home/home-health"), position: "68% 48%" },
-  { title: "Osano Pets", tone: "pets", icon: "/images/home/icons/home-pets-icon.svg", tags: ["Care", "Comfort", "Companions"], href: "/solutions/pets", image: resolvePublicImage("images/home/home-pets"), position: "center 50%" },
+  { title: "OSANO Hygiene", tone: "hygiene", icon: "/images/home/icons/home-hygiene-icon.svg", tags: ["Air", "Water", "Surface"], href: "/solutions/hygiene", image: resolvePublicImage("images/home/home-hygiene"), position: "center 58%" },
+  { title: "OSANO Health", tone: "health", icon: "/images/home/icons/home-health-icon.svg", tags: ["Vitality", "Longevity", "Balance"], href: "/solutions/health", image: resolvePublicImage("images/home/home-health"), position: "68% 48%" },
+  { title: "OSANO Pets", tone: "pets", icon: "/images/home/icons/home-pets-icon.svg", tags: ["Care", "Comfort", "Companions"], href: "/solutions/pets", image: resolvePublicImage("images/home/home-pets"), position: "center 50%" },
 ] as const;
 
 const communityItems = [
@@ -21,9 +21,9 @@ const communityItems = [
 ] as const;
 
 const homeTechnologies = [
-  { title: "Oxygen Systems", image: "/images/home/technology/technology-oxygen.png", alt: "Oxygen O2 water molecule", copy: "Elevating cellular nourishment, concentration, and night-time sleep restoration in the bedroom." },
-  { title: "Aqueous Ozone", image: "/images/home/technology/technology-ozone.png", alt: "Aqueous ozone O3 water molecule", copy: "A natural sanitizer that deconstructs pathogens on surfaces instantly, reverting to pure oxygen." },
-  { title: "Hydrogen Science", image: "/images/home/technology/technology-hydrogen.png", alt: "Hydrogen H2 water molecule", copy: "Providing active antioxidant pathways that support full-body recovery and metabolic efficiency." },
+  { title: "Oxygen Systems", image: "/images/home/technology/technology-oxygen.png", alt: "Oxygen O2 molecule", copy: "Purposeful oxygen systems designed to complement focus, rest and everyday living environments." },
+  { title: "Aqueous Ozone", image: "/images/home/technology/technology-ozone.png", alt: "Aqueous ozone O3 molecule", copy: "A considered approach to everyday hygiene across water, surfaces and shared environments." },
+  { title: "Hydrogen Science", image: "/images/home/technology/technology-hydrogen.png", alt: "Hydrogen H2 molecule", copy: "Hydrogen-rich water designed to become a simple part of a considered daily routine." },
 ] as const;
 
 export default function HomePage() {
@@ -33,11 +33,11 @@ export default function HomePage() {
       <ScrollExpand
         src="/videos/home-hero.mp4"
         poster="/images/home/home-hero.webp"
-        title={<Image src="/brand/OSANO_Master_Logo_Black.svg" alt="OSANO" width={430} height={100} priority />}
+        title={<Image src="/brand/OSANO_Master_Logo_Black.svg" alt="OSANO" width={430} height={100} loading="eager" />}
       >
         <div className={styles.expandHeroCopy}>
           <div className={styles.expandWordmark}>
-            <Image src="/brand/OSANO_Master_Logo_Black.svg" alt="OSANO" fill sizes="310px" priority />
+            <Image src="/brand/OSANO_Master_Logo_Black.svg" alt="OSANO" fill sizes="310px" loading="eager" />
           </div>
           <h1>The Innovative<br />Lifestyle</h1>
           <div className={styles.heroActions}>
@@ -61,7 +61,7 @@ export default function HomePage() {
         <div className={styles.heroShade} />
         <div className={styles.heroCopy}>
           <div className={styles.logoPlaceholder}>
-            <Image src="/brand/OSANO_Master_Logo_Black.svg" alt="OSANO" fill sizes="310px" priority />
+            <Image src="/brand/OSANO_Master_Logo_Black.svg" alt="OSANO" fill sizes="310px" loading="eager" />
           </div>
           <h1 id="home-title">The Innovative<br />Lifestyle</h1>
           <div className={styles.heroActions}>
@@ -81,26 +81,26 @@ export default function HomePage() {
         <div className={styles.worldGrid}>
           {worlds.map(({ title, tone, icon, tags, href, image, position }) => <article className={styles.worldCard} data-tone={tone} key={title}>
             <div className={styles.worldImage}>
-              <Image src={image} alt={`${title} lifestyle setting`} fill sizes="(max-width: 900px) 100vw, 33vw" style={{ objectPosition: position }} unoptimized />
+              <Image src={image} alt={`${title} lifestyle setting`} fill sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) 50vw, 33vw" style={{ objectPosition: position }} />
             </div>
             <span className={styles.worldIcon}><Image src={icon} alt="" width={38} height={38} unoptimized /></span>
             <div className={styles.worldBody}>
               <h3>{title}</h3><div className={styles.tags}>{tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-              <Link href={href}>Explore {title.replace("Osano ", "")} <b>→</b></Link>
+              <Link href={href}>Explore {title.replace("OSANO ", "")} <b>→</b></Link>
             </div>
           </article>)}
         </div>
       </section>
 
       <section className={styles.community} data-home-reveal>
-        <h2>Community</h2><p>Learning, sharing, and growing together for a better tomorrow.</p>
+        <h2>Community</h2><p>Learning, sharing and growing together for a better tomorrow.</p>
         <JoinCommunityButton />
         <div className={styles.communityGrid}>
           <div className={styles.communityFeature}>
             <Image src="/images/home/home-community-feature.webp" alt="OSANO community sharing ideas together" fill sizes="(max-width: 900px) 100vw, 65vw" />
-            <div><h3>Conversation<br />that make knowledge<br />easier apply</h3><Link href="/community">join conversation&nbsp; →</Link></div>
+            <div><h3>Conversations<br />that make knowledge<br />easier to apply</h3><Link href="/community">Join the conversation&nbsp; →</Link></div>
           </div>
-          <div className={styles.communityList}>{communityItems.map(({ title, image, position }) => <Link href="/community" key={title}><span className={styles.communityThumb}><Image src={image} alt="" fill sizes="135px" style={{ objectPosition: position }} /></span><span><b>{title}</b><small>read stories&nbsp; →</small></span></Link>)}</div>
+          <div className={styles.communityList}>{communityItems.map(({ title, image, position }) => <Link href="/community" key={title}><span className={styles.communityThumb}><Image src={image} alt="" fill sizes="135px" style={{ objectPosition: position }} /></span><span><b>{title}</b><small>Read stories&nbsp; →</small></span></Link>)}</div>
         </div>
       </section>
 
@@ -110,8 +110,8 @@ export default function HomePage() {
       </section>
 
       <section className={styles.cta} data-home-reveal>
-        <p className={styles.eyebrow}>READY TO START</p><h2>Close the conversation that fits you</h2>
-        <div className={styles.ctaGrid}>{[["Explore Solutions", "Browse our systems for your specific environments.", "/solutions", "View solutions"], ["Read Stories", "Gain insights from real-world applications and experts.", "/stories", "View stories"], ["Talk with Osano", "Connect with our design and technical support teams.", "/contact", "Start conversation"]].map(([title,copy,href,label]) => <article key={title}><h3>{title}</h3><p>{copy}</p><Link href={href}>{label}</Link></article>)}</div>
+        <p className={styles.eyebrow}>READY TO START</p><h2>Choose the path that fits you</h2>
+        <div className={styles.ctaGrid}>{[["Explore Solutions", "Browse systems designed around specific environments.", "/solutions", "View solutions"], ["Read Stories", "Discover insights from real-world applications and experts.", "/stories", "View stories"], ["Talk with OSANO", "Connect with our design and technical support teams.", "/contact", "Start a conversation"]].map(([title,copy,href,label]) => <article key={title}><h3>{title}</h3><p>{copy}</p><Link href={href}>{label}</Link></article>)}</div>
       </section>
     </div>
   );

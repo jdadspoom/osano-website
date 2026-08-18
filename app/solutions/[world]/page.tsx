@@ -7,6 +7,7 @@ import { getWorld, worlds } from "@/data/worlds";
 import { HealthSolutionPage } from "@/components/health-solution-page";
 import { HygieneSolutionPage } from "@/components/hygiene-solution-page";
 import { PetsSolutionPage } from "@/components/pets-solution-page";
+import { createPageMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -18,11 +19,7 @@ export async function generateMetadata({ params }: PageProps<"/solutions/[world]
   const { world: slug } = await params;
   const world = getWorld(slug);
   if (!world) return {};
-  return {
-    title: { absolute: world.seoTitle },
-    description: world.seoDescription,
-    alternates: { canonical: `/solutions/${world.slug}` },
-  };
+  return createPageMetadata(world.seoTitle, world.seoDescription, `/solutions/${world.slug}`);
 }
 
 export default async function WorldPage({ params }: PageProps<"/solutions/[world]">) {

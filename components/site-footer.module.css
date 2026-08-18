@@ -13,7 +13,16 @@
 .socials svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .legal{width:min(1600px,calc(100% - 160px));min-height:34px;margin:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:flex-start;gap:24px;border-top:1px solid rgba(255,255,255,.7);font-size:9px;color:rgba(255,255,255,.94)}
 .legal>div{display:flex;gap:24px}
+.legal a,.legal button{padding:0;border:0;background:none;color:inherit;font:inherit;text-decoration:none;cursor:pointer}.legal a:hover,.legal button:hover{text-decoration:underline;text-underline-offset:3px}
 .copyright{color:rgba(255,255,255,.78)}
+.brand,.column,.legal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .95s cubic-bezier(.22,1,.36,1)}
+.column:nth-child(2){transition-delay:.1s}.column:nth-child(3){transition-delay:.2s}.column:nth-child(4){transition-delay:.3s}
+.legal{transform:translateY(14px);transition-delay:.38s}
+.legal::before{content:"";position:absolute;top:-1px;right:0;left:0;height:1px;background:rgba(255,255,255,.7);transform:scaleX(0);transform-origin:left;transition:transform 1.15s cubic-bezier(.22,1,.36,1) .34s}
+.legal{position:relative;border-top:0}
+.footer[data-visible="true"] .brand,.footer[data-visible="true"] .column,.footer[data-visible="true"] .legal{opacity:1;transform:none}
+.footer[data-visible="true"] .legal::before{transform:scaleX(1)}
+@media(prefers-reduced-motion:reduce){.brand,.column,.legal{opacity:1;transform:none;transition:none}.legal::before{transform:scaleX(1);transition:none}}
 @media(max-width:1050px){.columns,.legal{width:calc(100% - 64px)}.columns{grid-template-columns:1.55fr repeat(3,1fr);gap:30px}}
 @media(max-width:760px){.columns{grid-template-columns:1fr 1fr}.brand{grid-column:1/-1}.connect{grid-column:auto}}
 @media(max-width:620px){.footer{padding-bottom:18px}.columns,.legal{width:calc(100% - 40px)}.columns{min-height:0;padding:52px 0 42px;grid-template-columns:1fr 1fr;gap:44px 28px}.brand,.connect{grid-column:1/-1}.brand p{margin-top:22px}.legal{padding-top:18px;justify-content:flex-start;flex-wrap:wrap;gap:14px}.legal>div{flex-wrap:wrap;gap:12px 22px}.column{gap:17px}}

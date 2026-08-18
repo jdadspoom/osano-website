@@ -57,9 +57,9 @@ export const products: Product[] = seeds.map((seed) => ({
     { kind: "image", label: "Product Detail Image" },
     { kind: "image", label: "Product in Context Image" },
   ],
-  video: { kind: "video", label: "Product Film Coming Soon" },
+  video: { kind: "video", label: "Product film coming soon" },
   documents: [
-    { kind: "document", label: "Product Document Coming Soon" },
+    { kind: "document", label: "Product document coming soon" },
   ],
   relatedSolutionIds: seed.relatedSolutionIds,
   relatedProductIds: [],

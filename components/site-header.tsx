@@ -21,6 +21,7 @@ export function SiteHeader() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [isHeaderHidden, setIsHeaderHidden] = useState(false);
+  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
 
   useEffect(() => {
     let previousY = window.scrollY;
@@ -63,6 +64,16 @@ export function SiteHeader() {
     return () => document.body.classList.remove("menu-open");
   }, [isOpen]);
 
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setIsOpen(false);
+      setIsSolutionsOpen(false);
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, [pathname]);
+
+  const closeMobileNavigation = () => setIsOpen(false);
+
   return (
     <header className={`site-header${isHeaderHidden ? " site-header--hidden" : ""}`}>
       <div className="header-inner">
@@ -72,26 +83,44 @@ export function SiteHeader() {
             alt="OSANO"
             width={184}
             height={42}
-            priority
+            loading="eager"
           />
         </Link>
 
         <nav className="desktop-navigation" aria-label="Primary navigation">
           {navigation.map((item) =>
             item.href === "/solutions" ? (
-              <div className="desktop-nav-group" key={item.href}>
+              <div
+                className="desktop-nav-group"
+                key={item.href}
+                data-open={isSolutionsOpen}
+                onPointerLeave={() => setIsSolutionsOpen(false)}
+                onBlur={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget)) setIsSolutionsOpen(false);
+                }}
+              >
                 <Link
                   href={item.href}
                   className={isActive(pathname, item.href) ? "active" : undefined}
                   aria-current={pathname === item.href ? "page" : undefined}
+                  aria-expanded={isSolutionsOpen}
+                  onPointerEnter={() => setIsSolutionsOpen(true)}
+                  onFocus={() => setIsSolutionsOpen(true)}
                 >
                   {item.label}
                   <span className="nav-chevron" aria-hidden="true">⌄</span>
                 </Link>
                 <div className="solutions-dropdown">
                   {solutionNavigation.map((solution) => (
-                    <Link key={solution.href} href={solution.href}>
-                      {solution.label}
+                    <Link
+                      key={solution.href}
+                      href={solution.href}
+                      onClick={(event) => {
+                        setIsSolutionsOpen(false);
+                        event.currentTarget.blur();
+                      }}
+                    >
+                      {solution.label.replace(/^OSANO\s+/i, "")}
                     </Link>
                   ))}
                 </div>
@@ -154,20 +183,24 @@ export function SiteHeader() {
         aria-hidden={!isOpen}
       >
         <nav aria-label="Mobile navigation">
-          {navigation.map((item, index) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              tabIndex={isOpen ? 0 : -1}
-              className={isActive(pathname, item.href) ? "active" : undefined}
-              onClick={() => setIsOpen(false)}
-            >
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              {item.label}
-            </Link>
-          ))}
+          <div className="mobile-nav-primary">
+            <p>EXPLORE OSANO</p>
+            {navigation.filter((item) => item.href !== "/solutions").map((item, index) => (
+              <Link key={item.href} href={item.href} tabIndex={isOpen ? 0 : -1} className={isActive(pathname, item.href) ? "active" : undefined} onPointerDown={closeMobileNavigation} onClick={closeMobileNavigation}>
+                <span>{String(index + 1).padStart(2, "0")}</span>{item.label}<b aria-hidden="true">↗</b>
+              </Link>
+            ))}
+          </div>
+          <section className="mobile-nav-worlds" aria-labelledby="mobile-solutions-title">
+            <header><div><p>OUR WORLDS</p><h2 id="mobile-solutions-title">Solutions</h2></div><Link href="/solutions" tabIndex={isOpen ? 0 : -1} onPointerDown={closeMobileNavigation} onClick={closeMobileNavigation}>View all</Link></header>
+            {solutionNavigation.map((solution, index) => (
+              <Link key={solution.href} href={solution.href} tabIndex={isOpen ? 0 : -1} data-world={solution.label.replace(/^OSANO\s+/i, "").toLowerCase()} onPointerDown={closeMobileNavigation} onClick={closeMobileNavigation}>
+                <small>0{index + 1}</small><strong>{solution.label.replace(/^OSANO\s+/i, "")}</strong><span>{index === 0 ? "Well-being · Balance" : index === 1 ? "Air · Water · Surface" : "Care · Comfort · Companions"}</span><b aria-hidden="true">→</b>
+              </Link>
+            ))}
+          </section>
           <div className="mobile-nav-footer">
-            <span>English</span>
+            <span>ENGLISH · OSANO</span>
             <button
               type="button"
               tabIndex={isOpen ? 0 : -1}

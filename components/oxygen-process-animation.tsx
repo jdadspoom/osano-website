@@ -53,7 +53,7 @@ export function OxygenProcessAnimation({ storyStep = 0 }: { storyStep?: number }
     <div className="psa-interactive-diagram" data-story-step={storyStep || undefined}>
     <svg className="psa-svg" viewBox="0 0 1600 1020" role="img" aria-labelledby="psa-title psa-desc">
       <title id="psa-title">Animated Pressure Swing Adsorption process</title>
-      <desc id="psa-desc">Ambient air enters a PSA chamber, nitrogen is removed downward, and concentrated oxygen exits to the right.</desc>
+      <desc id="psa-desc">Ambient air enters a PSA chamber, nitrogen is removed downwards and concentrated oxygen exits to the right.</desc>
       <defs>
         <linearGradient id="airStream" x1="0" x2="1">
           <stop offset="0" stopColor="#dff7f4" stopOpacity="0" />

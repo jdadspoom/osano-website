@@ -1,30 +1,11 @@
 import Image from "next/image";
-import Link from "next/link";
-
-const careContexts = [
-  {
-    title: "Pet parent",
-    description: "Everyday care for life together.",
-    image: "/images/solutions/pets/pets-parent.webp",
-    href: "/solutions/pets/pet-owner",
-  },
-  {
-    title: "Grooming",
-    description: "Smarter hygiene for professional grooming.",
-    image: "/images/solutions/pets/pets-grooming.webp",
-    href: "/solutions/pets/groomer",
-  },
-  {
-    title: "Veterinary",
-    description: "Technology for professional pet care.",
-    image: "/images/solutions/pets/pets-veterinary.webp",
-    href: "/solutions/pets/veterinary",
-  },
-];
+import { PetsApproachCarousel } from "@/components/pets-approach-carousel";
+import { PetsEverydayCare } from "@/components/pets-everyday-care";
+import { OsanoEmptyArtwork } from "@/components/osano-empty-artwork";
 
 export function PetsSolutionPage() {
   return (
-    <main className="pets-world-page">
+    <div className="pets-world-page">
       <section className="pets-world-hero">
         <div className="pets-world-hero-copy">
           <p className="pets-world-kicker">OSANO PETS</p>
@@ -33,7 +14,7 @@ export function PetsSolutionPage() {
           <a href="#pet-care-contexts">Explore pet-care contexts <span aria-hidden="true">→</span></a>
         </div>
         <div className="pets-world-hero-image">
-          <Image src="/images/solutions/pets/pets-hero.webp" alt="A golden retriever relaxing at home with its owner" fill priority sizes="(max-width: 760px) 100vw, 60vw" />
+          <Image src="/images/solutions/pets/pets-hero.webp" alt="A golden retriever relaxing at home with its owner" fill loading="eager" sizes="(max-width: 760px) 100vw, 60vw" />
         </div>
       </section>
 
@@ -48,33 +29,19 @@ export function PetsSolutionPage() {
         </div>
       </section>
 
-      <section className="pets-world-approach" id="pet-care-contexts">
-        <p className="pets-world-kicker">OUR APPROACH</p>
-        <h2>Find the right care.</h2>
-        <p>Designed for every way you care.</p>
-        <div className="pets-world-card-grid">
-          {careContexts.map((context) => (
-            <article key={context.title}>
-              <div className="pets-world-card-image">
-                <Image src={context.image} alt={context.title} fill sizes="(max-width: 760px) 100vw, 30vw" />
-              </div>
-              <h3>{context.title}</h3>
-              <p>{context.description}</p>
-              <Link href={context.href}>Explore <span aria-hidden="true">→</span></Link>
-            </article>
-          ))}
-        </div>
-      </section>
+      <PetsApproachCarousel />
 
-      <section className="pets-world-closing">
-        <div>
-          <h2>For a better life, together.</h2>
-          <p>Because their well-being is part of yours.</p>
-        </div>
-        <div className="pets-world-closing-image">
-          <Image src="/images/solutions/pets/pets-context.webp" alt="A veterinary consultation with a pet owner" fill sizes="(max-width: 760px) 100vw, 48vw" />
+      <PetsEverydayCare />
+
+      <section className="pets-together-banner" aria-labelledby="pets-together-title">
+        <div className="pets-together-placeholder"><OsanoEmptyArtwork label="Life together" tone="pets" /></div>
+        <div className="pets-together-shade" />
+        <div className="pets-together-copy">
+          <h2 id="pets-together-title">For a better life, together.</h2>
+          <p>Thoughtful pet-care technology made for everyday life.</p>
+          <a href="#pet-care-contexts">Explore now</a>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

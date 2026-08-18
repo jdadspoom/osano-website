@@ -11,6 +11,7 @@ export const publishedRoutes = [
   "/stories",
   "/community",
   "/contact",
+  "/privacy",
   ...worlds.map((world) => `/solutions/${world.slug}`),
   ...publishedSolutions.flatMap((solution) =>
     solution.route ? [solution.route] : [],

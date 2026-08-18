@@ -6,7 +6,7 @@ import { useEffect } from "react";
 export function AmbientBackgroundMotion(){
   const pathname=usePathname();
   useEffect(()=>{
-    if(!/^\/(technology|contact)(\/|$)/.test(pathname)||window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+    if(!/^\/(technology|contact)(\/|$)/.test(pathname)||window.matchMedia("(prefers-reduced-motion: reduce), (max-width: 700px), (pointer: coarse)").matches)return;
     const page=document.querySelector<HTMLElement>("#main-content .route-transition > div");
     if(!page)return;
     page.dataset.ambientPage="true";

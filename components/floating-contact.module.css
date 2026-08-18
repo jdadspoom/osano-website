@@ -10,5 +10,5 @@
 .toggle:focus-visible,.menu a:focus-visible{outline:2px solid #d37b50;outline-offset:3px}
 .toggle svg{width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 @keyframes appear{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:none}}
-@media(max-width:700px){.widget{right:18px;bottom:18px}.toggle{width:54px;height:54px}.menu{width:min(220px,calc(100vw - 36px))}}
+@media(max-width:700px){.widget{right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom))}.toggle{width:54px;height:54px}.menu{width:min(220px,calc(100vw - 36px))}}
 @media(prefers-reduced-motion:reduce){.menu{animation:none}.menu a,.toggle{transition:none}}

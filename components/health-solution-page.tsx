@@ -1,39 +1,19 @@
 import Image from "next/image";
-import Link from "next/link";
-
-const paths = [
-  {
-    number: "01",
-    title: "Oxygen",
-    description: "Breathe better.",
-    image: "/images/solutions/health/health-oxygen.png?v=20260814",
-  },
-  {
-    number: "02",
-    title: "Hydrogen",
-    description: "Hydrate better.",
-    image: "/images/solutions/health/health-hydrogen.webp",
-  },
-  {
-    number: "03",
-    title: "QRS",
-    description: "Restore balance.",
-    image: "/images/solutions/health/health-qrs.webp",
-  },
-];
+import { HealthPathsCarousel } from "@/components/health-paths-carousel";
+import { OsanoEmptyArtwork } from "@/components/osano-empty-artwork";
 
 export function HealthSolutionPage() {
   return (
-    <main className="hygiene-page">
+    <div className="hygiene-page health-world-page">
       <section className="hygiene-hero">
         <div className="hygiene-hero-copy">
           <p className="hygiene-kicker">OSANO HEALTH</p>
           <h1>Well-being<br />in daily life</h1>
-          <p>Personalized routes that integrate clean water, air and environment into a balanced daily routine.</p>
+          <p>Personalised routes that integrate clean water, air and the surrounding environment into a balanced daily routine.</p>
           <a className="hygiene-light-button" href="#health-paths">Explore health contexts <span aria-hidden="true">→</span></a>
         </div>
         <div className="hygiene-hero-media">
-          <Image src="/images/solutions/health/health-hero.png" alt="A woman preparing fresh vegetables in a bright kitchen" fill priority sizes="(max-width: 760px) 100vw, 60vw" />
+          <Image src="/images/solutions/health/health-hero.png" alt="A woman preparing fresh vegetables in a bright kitchen" fill loading="eager" sizes="(max-width: 760px) 100vw, 60vw" />
         </div>
       </section>
 
@@ -49,49 +29,36 @@ export function HealthSolutionPage() {
         </div>
       </section>
 
-      <section className="hygiene-paths" id="health-paths">
-        <div className="hygiene-section-heading">
-          <p className="hygiene-kicker">CHOOSE YOUR WELL-BEING PATH</p>
-          <h2>Find what fits your everyday life.</h2>
-        </div>
-        <div className="hygiene-path-grid">
-          {paths.map((path) => (
-            <article className="hygiene-path-card" key={path.title}>
-              <div className="hygiene-path-image">
-                <Image src={path.image} alt={`${path.title} hygiene context`} fill sizes="(max-width: 760px) 88vw, 30vw" />
-                <span>{path.number}</span>
-              </div>
-              <div className="hygiene-path-body">
-                <div>
-                  <h3>{path.title}</h3>
-                  <p>{path.description}</p>
-                </div>
-                <Link href="/technology">Explore <span aria-hidden="true">→</span></Link>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+      <HealthPathsCarousel />
 
-      <section className="hygiene-approach">
-        <p className="hygiene-kicker">OUR APPROACH</p>
-        <h2>Made to fit your life.</h2>
-        <div className="hygiene-routine-grid">
-          {["Morning", "Day", "Evening"].map((label, index) => (
-            <article key={label}>
+      <section className="health-routine-section" aria-labelledby="health-routine-title">
+        <p className="health-routine-kicker">OUR APPROACH</p>
+        <h2 id="health-routine-title">Made to fit your life.</h2>
+        <div className="health-routine-cards">
+          {[
+            { label: "Morning", image: "/images/solutions/health/health-hero.png" },
+            { label: "Day", image: "/images/solutions/health/health-oxygen.png?v=20260814" },
+            { label: "Evening", image: "/images/solutions/health/health-qrs.webp" },
+          ].map((routine, index) => (
+            <article className="health-routine-card" key={routine.label} tabIndex={0}>
+              <Image src={routine.image} alt={`${routine.label} well-being routine prototype`} fill sizes="(max-width: 760px) 88vw, 50vw" />
+              <div className="health-routine-shade" />
               <span>{String(index + 1).padStart(2, "0")}</span>
-              <h3>{label}</h3>
+              <h3>{routine.label}</h3>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="hygiene-end-banner">
-        <div>
-          <h2>Live well. Every day.</h2>
-          <p>Well-being technology, made for everyday life.</p>
+      <section className="health-closing-banner" aria-labelledby="health-closing-title">
+        <div className="health-closing-placeholder"><OsanoEmptyArtwork label="Evening well-being" tone="health" /></div>
+        <div className="health-closing-shade" />
+        <div className="health-closing-copy">
+          <h2 id="health-closing-title">Live well. Every day.</h2>
+          <p>Well-being technology made for everyday life.</p>
+          <a href="#health-paths">Explore now</a>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
