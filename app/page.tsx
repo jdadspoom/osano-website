@@ -100,7 +100,7 @@ export default function HomePage() {
             <Image src="/images/home/home-community-feature.webp" alt="OSANO community sharing ideas together" fill sizes="(max-width: 900px) 100vw, 65vw" />
             <div><h3>Conversations<br />that make knowledge<br />easier to apply</h3><Link href="/community">Join the conversation&nbsp; →</Link></div>
           </div>
-          <div className={styles.communityList}>{communityItems.map(({ title, image, position }) => <Link href="/community" key={title}><span className={styles.communityThumb}><Image src={image} alt="" fill sizes="135px" style={{ objectPosition: position }} /></span><span><b>{title}</b><small>Read stories&nbsp; →</small></span></Link>)}</div>
+          <div className={styles.communityList}>{communityItems.map(({ title, image, position }) => <Link href="/community" key={title}><span className={styles.communityThumb}><Image src={image} alt="" fill sizes="135px" style={{ objectPosition: position }} /></span><span><b>{title}</b><small>Read stories&nbsp;</small></span></Link>)}</div>
         </div>
       </section>
 

@@ -10,7 +10,7 @@ export function HygieneSolutionPage() {
           <p className="clean-hygiene-kicker">OSANO HYGIENE</p>
           <h1>Clean<br />by design</h1>
           <p>Advanced hygiene technology for the spaces you live in.</p>
-          <a href="#hygiene-solutions">Explore hygiene contexts <span aria-hidden="true">→</span></a>
+          <a href="#hygiene-solutions">Explore hygiene contexts <span aria-hidden="true"></span></a>
         </div>
         <div className="clean-hygiene-media">
           <Image src="/images/solutions/hygiene/hygiene-hero.png" alt="A clean stone basin with running water" fill loading="eager" sizes="(max-width: 760px) 100vw, 60vw" />

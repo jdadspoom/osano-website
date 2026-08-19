@@ -193,4 +193,110 @@
 @media(prefers-reduced-motion:reduce){.editorialFilmImage,.editorialFilm .videoPlay,.chapterList>button{animation:none!important;transition:none!important}}
 /* Lightweight CSS background overrides. */
 .tech{background-image:url('/images/home/technology/technology-background.webp')!important}
+
+/* Refined OSANO film control: optical centering, restrained glass and tactile motion. */
+.editorialFilm .videoPlay{
+  z-index:2;
+  width:72px;
+  height:72px;
+  display:grid;
+  place-items:center;
+  overflow:visible;
+  border:1px solid rgba(255,255,255,.72);
+  border-radius:50%;
+  background:rgba(244,241,235,.17);
+  box-shadow:0 12px 34px rgba(8,25,19,.18),inset 0 1px 0 rgba(255,255,255,.28);
+  -webkit-backdrop-filter:blur(12px) saturate(1.08);
+  backdrop-filter:blur(12px) saturate(1.08);
+  transition:transform .55s cubic-bezier(.22,1,.36,1),background-color .4s ease,border-color .4s ease,box-shadow .5s ease;
+}
+.editorialFilm .videoPlay::before{
+  content:"";
+  position:absolute;
+  inset:-9px;
+  border:1px solid rgba(255,255,255,0);
+  border-radius:50%;
+  transform:scale(.9);
+  transition:border-color .4s ease,transform .65s cubic-bezier(.22,1,.36,1);
+}
+.editorialFilm .videoPlay::after{display:none}
+.editorialFilm .videoPlay svg{
+  width:25px;
+  height:25px;
+  display:block;
+  overflow:visible;
+  fill:#fff;
+  filter:drop-shadow(0 2px 5px rgba(6,19,15,.22));
+  transform:translateX(1.5px);
+  transition:transform .55s cubic-bezier(.22,1,.36,1);
+}
+.editorialFilm:hover .videoPlay,
+.editorialFilm:focus-visible .videoPlay{
+  background:rgba(255,255,255,.28);
+  border-color:rgba(255,255,255,.96);
+  box-shadow:0 16px 42px rgba(8,25,19,.25),inset 0 1px 0 rgba(255,255,255,.4);
+  transform:scale(1.055);
+}
+.editorialFilm:hover .videoPlay::before,
+.editorialFilm:focus-visible .videoPlay::before{border-color:rgba(255,255,255,.28);transform:scale(1)}
+.editorialFilm:hover .videoPlay svg,
+.editorialFilm:focus-visible .videoPlay svg{transform:translateX(3px) scale(1.04)}
+.editorialFilm:active .videoPlay{transform:scale(.96)}
+@media(max-width:560px){.editorialFilm .videoPlay{width:62px;height:62px}.editorialFilm .videoPlay svg{width:22px;height:22px}}
+@media(prefers-reduced-motion:reduce){.editorialFilm .videoPlay,.editorialFilm .videoPlay::before,.editorialFilm .videoPlay svg{transition:none!important}}
+
+/* Final play-button treatment aligned with OSANO's circular card controls. */
+.editorialFilm .videoPlay{
+  width:62px;
+  height:62px;
+  border:0;
+  background:rgba(248,247,243,.94);
+  box-shadow:0 10px 28px rgba(8,25,19,.2),inset 0 1px 0 rgba(255,255,255,.9);
+  -webkit-backdrop-filter:blur(8px);
+  backdrop-filter:blur(8px);
+}
+.editorialFilm .videoPlay::before{display:none}
+.editorialFilm .videoPlay svg{
+  width:23px;
+  height:23px;
+  fill:#111915;
+  filter:none;
+  transform:translateX(1.5px);
+}
+.editorialFilm:hover .videoPlay,
+.editorialFilm:focus-visible .videoPlay{
+  background:#fff;
+  box-shadow:0 14px 34px rgba(8,25,19,.25),inset 0 1px 0 #fff;
+  transform:scale(1.045);
+}
+.editorialFilm:hover .videoPlay svg,
+.editorialFilm:focus-visible .videoPlay svg{transform:translateX(3px) scale(1.03)}
+@media(max-width:560px){.editorialFilm .videoPlay{width:56px;height:56px}.editorialFilm .videoPlay svg{width:21px;height:21px}}
+
+/* Icon-only play control; the invisible hit area remains comfortably tappable. */
+.editorialFilm .videoPlay,
+.editorialFilm:hover .videoPlay,
+.editorialFilm:focus-visible .videoPlay,
+.editorialFilm:active .videoPlay{
+  width:78px;
+  height:78px;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+  -webkit-backdrop-filter:none;
+  backdrop-filter:none;
+}
+.editorialFilm .videoPlay svg{
+  width:48px;
+  height:48px;
+  fill:#fff;
+  filter:drop-shadow(0 3px 8px rgba(5,17,13,.48));
+  transform:translateX(2px);
+}
+.editorialFilm:hover .videoPlay,
+.editorialFilm:focus-visible .videoPlay{transform:scale(1.08)}
+.editorialFilm:hover .videoPlay svg,
+.editorialFilm:focus-visible .videoPlay svg{transform:translateX(4px) scale(1.06)}
+.editorialFilm:active .videoPlay{transform:scale(.96)}
+@media(max-width:560px){.editorialFilm .videoPlay{width:68px;height:68px}.editorialFilm .videoPlay svg{width:40px;height:40px}}
 .videoTeaser{background-image:url('/images/home/home-health.webp')!important}

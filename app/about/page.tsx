@@ -54,7 +54,7 @@ export default function AboutPage() {
         <p className={styles.label}>COMMUNITY</p>
         <h2>Knowledge becomes<br />useful when people can<br />apply it.</h2>
         <p>Community connects the three worlds through knowledge,<br />activities, membership and consultation.</p>
-        <Link href="/community" className={styles.primary}>Explore our community&nbsp; →</Link>
+        <Link href="/community" className={styles.primary}>Explore our community&nbsp;</Link>
       </div>
       <div className={styles.communityImage}>
         <Image

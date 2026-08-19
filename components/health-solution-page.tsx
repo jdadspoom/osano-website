@@ -10,7 +10,7 @@ export function HealthSolutionPage() {
           <p className="hygiene-kicker">OSANO HEALTH</p>
           <h1>Well-being<br />in daily life</h1>
           <p>Personalised routes that integrate clean water, air and the surrounding environment into a balanced daily routine.</p>
-          <a className="hygiene-light-button" href="#health-paths">Explore health contexts <span aria-hidden="true">→</span></a>
+          <a className="hygiene-light-button" href="#health-paths">Explore health contexts <span aria-hidden="true"></span></a>
         </div>
         <div className="hygiene-hero-media">
           <Image src="/images/solutions/health/health-hero.png" alt="A woman preparing fresh vegetables in a bright kitchen" fill loading="eager" sizes="(max-width: 760px) 100vw, 60vw" />

@@ -75,7 +75,11 @@ export function HomeVideoGallery() {
           {activeVideo.poster && <span className={styles.editorialFilmImage} style={{ backgroundImage: `url('${activeVideo.poster}')` }} aria-hidden="true" />}
           {!activeVideo.poster && <span className={styles.videoPlaceholder}><OsanoEmptyArtwork label={activeVideo.title} kind="video" /></span>}
           <span className={styles.editorialFilmShade} aria-hidden="true" />
-          <span className={styles.videoPlay} aria-hidden="true" />
+          <span className={styles.videoPlay} aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M8.75 6.35 17.4 12l-8.65 5.65Z" />
+            </svg>
+          </span>
           <span className={styles.editorialFilmMeta}><small>FEATURED FILM</small><strong>{activeVideo.title}</strong><em>{activeVideo.duration}</em></span>
         </button>
         <aside className={styles.editorialChapters} aria-label="Film chapters">

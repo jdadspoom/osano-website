@@ -108,7 +108,11 @@ export function SiteHeader() {
                   onFocus={() => setIsSolutionsOpen(true)}
                 >
                   {item.label}
-                  <span className="nav-chevron" aria-hidden="true">⌄</span>
+                  <span className="nav-chevron" aria-hidden="true">
+                    <svg viewBox="0 0 12 8" focusable="false">
+                      <path d="m1.25 1.5 4.75 4.75 4.75-4.75" />
+                    </svg>
+                  </span>
                 </Link>
                 <div className="solutions-dropdown">
                   {solutionNavigation.map((solution) => (

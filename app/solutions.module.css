@@ -10,3 +10,21 @@
 @media(max-width:560px){.communityFeature{padding:58px 20px}.communityCopy h2{font-size:35px}.communityCopy h2 br{display:none}.communityPhoto{min-height:270px;border-radius:14px}}
 /* Lightweight CSS background override. */
 .quote,.communityFeature{background-image:url('/images/solutions/solutions-backgroung.webp')}
+
+.worlds article .worldLink{
+  position:relative;
+  display:inline-flex;
+  width:fit-content;
+  align-items:center;
+  gap:.55rem;
+  padding:.15rem 0 .35rem;
+  background:transparent!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+.worldLink::after{content:"";position:absolute;right:0;bottom:0;left:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.worldLink>span:last-child{display:inline-block;transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.worlds article .worldLink:hover,.worlds article .worldLink:focus-visible{background:transparent!important;box-shadow:none!important;transform:translateY(-2px)!important}
+.worldLink:hover::after,.worldLink:focus-visible::after{transform:scaleX(1);transform-origin:left}
+.worldLink:hover>span:last-child,.worldLink:focus-visible>span:last-child{transform:translateX(.3rem)}
+@media(prefers-reduced-motion:reduce){.worldLink::after,.worldLink>span:last-child{transition:none}.worlds article .worldLink:hover,.worlds article .worldLink:focus-visible{transform:none!important}}

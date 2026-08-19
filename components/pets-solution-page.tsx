@@ -11,7 +11,7 @@ export function PetsSolutionPage() {
           <p className="pets-world-kicker">OSANO PETS</p>
           <h1>Better care.<br />Better<br />together.</h1>
           <p>Thoughtful technology for the pets we love.</p>
-          <a href="#pet-care-contexts">Explore pet-care contexts <span aria-hidden="true">→</span></a>
+          <a href="#pet-care-contexts">Explore pet-care contexts <span aria-hidden="true"></span></a>
         </div>
         <div className="pets-world-hero-image">
           <Image src="/images/solutions/pets/pets-hero.webp" alt="A golden retriever relaxing at home with its owner" fill loading="eager" sizes="(max-width: 760px) 100vw, 60vw" />
